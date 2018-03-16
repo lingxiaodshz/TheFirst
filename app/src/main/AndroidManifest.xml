@@ -16,7 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
-        <activity android:name=".selfdefinedview.Activity01">
+        <!--<activity android:name=".selfdefinedview.Activity01">
+        <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <activity android:name=".widget.LastInputActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

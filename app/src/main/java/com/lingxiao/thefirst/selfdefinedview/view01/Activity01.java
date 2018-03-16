@@ -1,4 +1,4 @@
-package com.lingxiao.thefirst.selfdefinedview;
+package com.lingxiao.thefirst.selfdefinedview.view01;
 
 import android.app.Activity;
 import android.os.Bundle;
