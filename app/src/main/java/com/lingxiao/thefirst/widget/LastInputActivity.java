@@ -98,7 +98,6 @@ public class LastInputActivity extends Activity {
             } else {
                 mTvMoney.setVisibility(View.GONE);
             }
-            mEtInput1.measure(View.MeasureSpec.AT_MOST, View.MeasureSpec.AT_MOST);
         }
     };
 }
