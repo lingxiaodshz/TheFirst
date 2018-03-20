@@ -50,7 +50,7 @@ public class View01 extends View {
         Paint paint = new Paint();
         paint.setAntiAlias(true);//抗锯齿
         paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL); //默认FILL,FILL填充，FILL_AND_STROKE 填充且描边，STROKE描边
+        paint.setStyle(Paint.Style.STROKE); //默认FILL,FILL填充，FILL_AND_STROKE 填充且描边，STROKE描边
         paint.setStrokeWidth(5);
         paint.setShadowLayer(10, 25, 25, Color.GREEN);
 
@@ -59,5 +59,15 @@ public class View01 extends View {
 
         canvas.drawCircle(200, 200, 150, paint);
 
+        canvas.drawLine(100, 100, 200, 200, paint);
+
+//        pts:是点的集合，大家下面可以看到，这里不是形成连接线，而是每两个点形成一条直线，
+// pts的组织方式为｛x1,y1,x2,y2,x3,y3,……｝
+
+        float[] pts = {10, 10, 100, 50, 50, 20};//必须是4的倍数，每4个画一条线
+        canvas.drawLines(pts, paint);
+
+        canvas.drawPoint(300, 300, paint);
+        canvas.drawPoint(200, 300, paint);
     }
 }
