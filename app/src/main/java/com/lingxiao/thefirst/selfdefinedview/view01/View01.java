@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -57,17 +59,26 @@ public class View01 extends View {
         //        //设置画布背景颜色
 //        canvas.drawRGB(255, 255,255);
 
-        canvas.drawCircle(200, 200, 150, paint);
-
-        canvas.drawLine(100, 100, 200, 200, paint);
+        //画圆
+//        canvas.drawCircle(200, 200, 150, paint);
+        // 画线
+//        canvas.drawLine(100, 100, 200, 200, paint);
 
 //        pts:是点的集合，大家下面可以看到，这里不是形成连接线，而是每两个点形成一条直线，
 // pts的组织方式为｛x1,y1,x2,y2,x3,y3,……｝
 
-        float[] pts = {10, 10, 100, 50, 50, 20};//必须是4的倍数，每4个画一条线
-        canvas.drawLines(pts, paint);
+//        float[] pts = {10, 10, 100, 50, 50, 20};//必须是4的倍数，每4个画一条线
+//        canvas.drawLines(pts, paint);
+//
+        //画点
+//        canvas.drawPoint(300, 300, paint);
+//        canvas.drawPoint(200, 300, paint);
 
-        canvas.drawPoint(300, 300, paint);
-        canvas.drawPoint(200, 300, paint);
+        //画长方形 注意长方形画的不是点位，画的是每条边的位置
+        canvas.drawRect(10, 10, 100, 100, paint);
+        RectF rectF = new RectF(120, 10, 250, 120);
+        canvas.drawRect(rectF, paint);
+        Rect rect = new Rect(270, 10, 320, 100);
+        canvas.drawRect(rect, paint);
     }
 }
