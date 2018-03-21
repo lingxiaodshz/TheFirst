@@ -54,7 +54,7 @@ public class View01 extends View {
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE); //默认FILL,FILL填充，FILL_AND_STROKE 填充且描边，STROKE描边
         paint.setStrokeWidth(5);
-        paint.setShadowLayer(10, 25, 25, Color.GREEN);
+//        paint.setShadowLayer(10, 25, 25, Color.GREEN);
 
         //        //设置画布背景颜色
 //        canvas.drawRGB(255, 255,255);
@@ -75,10 +75,26 @@ public class View01 extends View {
 //        canvas.drawPoint(200, 300, paint);
 
         //画长方形 注意长方形画的不是点位，画的是每条边的位置
-        canvas.drawRect(10, 10, 100, 100, paint);
-        RectF rectF = new RectF(120, 10, 250, 120);
-        canvas.drawRect(rectF, paint);
-        Rect rect = new Rect(270, 10, 320, 100);
-        canvas.drawRect(rect, paint);
+//        canvas.drawRect(10, 10, 100, 100, paint);
+//        RectF rectF = new RectF(120, 10, 250, 120);
+//        canvas.drawRect(rectF, paint);
+//        Rect rect = new Rect(270, 10, 320, 100);
+//        canvas.drawRect(rect, paint);
+
+        //画圆角矩形
+//        RectF rectF = new RectF(120, 10, 250, 120);
+//        canvas.drawRoundRect(rectF, 10, 50, paint);
+
+        //画椭圆
+        //canvas.drawOval(100,100,400,300,paint);
+
+        //画圆弧 true或false用来标记是否画一条横线将圆弧封闭
+//        canvas.drawArc(100, 100, 400, 300, 90, 180, false, paint);
+//        RectF rectF = new RectF(100,100,400,300);
+//        canvas.drawArc(rectF, 0, 90, true, paint);
+
+        //画实心圆弧 false只显示圆弧的弓弦部分实心，true为从圆心到圆弧整个角度范围都是实心
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawArc(100, 100, 400, 300, 45, 90, false, paint);
     }
 }
