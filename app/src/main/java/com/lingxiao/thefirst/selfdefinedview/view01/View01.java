@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
@@ -94,7 +95,52 @@ public class View01 extends View {
 //        canvas.drawArc(rectF, 0, 90, true, paint);
 
         //画实心圆弧 false只显示圆弧的弓弦部分实心，true为从圆心到圆弧整个角度范围都是实心
+//        paint.setStyle(Paint.Style.FILL);
+//        canvas.drawArc(100, 100, 400, 300, 45, 90, false, paint);
+
+        //画直线路径
+//        Path path = new Path();
+//        path.moveTo(10, 10);//设定起始点
+//        path.lineTo(100, 200);//第一条直线的终点，也是第二条直线的起点
+//        path.lineTo(300, 400);//画第二条直线
+//        path.close();//如果不写这行代码不会闭合，写上自动闭合，将起点和终点连接起来
+//        canvas.drawPath(path, paint);
+
+        //画矩形路径 如果只画矩形路径顺时针和逆时针没区别，如果沿着路径绘制文字就有区别了
+//        Path path = new Path();
+//        RectF rectF = new RectF(100, 100, 400, 300);
+//        path.addRect(rectF, Path.Direction.CW); //CW clockwise; CCW counter-clockwise
+//        canvas.drawPath(path, paint);
+//        String text = "落霞与孤鹜齐飞，秋水共长天一色";
+//        paint.setColor(Color.GREEN);
+//        paint.setTextSize(36);
+//        canvas.drawTextOnPath(text, path, 0, 18, paint);
+
+        //画圆角矩形 用float数组时，数组长度必须不小于8
+//        Path path = new Path();
+//        RectF rectF = new RectF(100, 100, 400, 300);
+//        path.addRoundRect(rectF, new float[]{20f, 10f, 20f, 10f, 20f, 10f, 20f, 10f, 20f, 10f}, Path.Direction.CCW);
+//        path.addRoundRect(rectF, 10, 20, Path.Direction.CW);
+//        canvas.drawPath(path, paint);
+
+        //画圆形路径
+//        Path path = new Path();
+//        path.addCircle(150, 150, 100, Path.Direction.CW);
+//        canvas.drawPath(path, paint);
+//        String text = "hello world";
+//        paint.setTextSize(30);
+//        canvas.drawTextOnPath(text, path, 10, 10, paint);
+
+        //绘制文字
+//        paint.setFakeBoldText(true);//设置是否为粗体文字
+//        paint.setUnderlineText(true);//设置下划线
+//        paint.setTextSkewX((float) -0.25);//设置字体水平倾斜度，普通斜体字是-0.25
+//        paint.setStrikeThruText(true);//设置带有删除线效果
+//        paint.setTextScaleX(2);//只会将水平方向拉伸，高度不会变
+        paint.setTextSize(36);
+        paint.setStrokeWidth(2);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawArc(100, 100, 400, 300, 45, 90, false, paint);
+        canvas.drawText("hello world", 100, 300, paint);
+
     }
 }
