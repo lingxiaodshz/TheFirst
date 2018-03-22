@@ -79,6 +79,7 @@ public class View01 extends View {
 //        canvas.drawPoint(200, 300, paint);
 
         //画长方形 注意长方形画的不是点位，画的是每条边的位置
+        //RectF和Rect的区别主要就是一个是float的参数类型，一个是整形
 //        canvas.drawRect(10, 10, 100, 100, paint);
 //        RectF rectF = new RectF(120, 10, 250, 120);
 //        canvas.drawRect(rectF, paint);
