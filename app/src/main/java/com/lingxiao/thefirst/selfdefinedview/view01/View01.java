@@ -1,14 +1,17 @@
 package com.lingxiao.thefirst.selfdefinedview.view01;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.lang.reflect.ParameterizedType;
@@ -137,10 +140,39 @@ public class View01 extends View {
 //        paint.setTextSkewX((float) -0.25);//设置字体水平倾斜度，普通斜体字是-0.25
 //        paint.setStrikeThruText(true);//设置带有删除线效果
 //        paint.setTextScaleX(2);//只会将水平方向拉伸，高度不会变
-        paint.setTextSize(36);
+//        paint.setTextSize(36);
+//        paint.setStrokeWidth(2);
+//        paint.setStyle(Paint.Style.FILL);
+//        canvas.drawText("hello world", 100, 300, paint);
+
+        //绘制文字并指定位置
+//        paint.setTextSize(36);
+//        paint.setStrokeWidth(2);
+//        float[] pos = new float[]{80, 100,
+//                80, 200,
+//                80, 300,
+//                180, 300,
+//                80, 400};
+//        canvas.drawPosText("hell", pos, paint);//pos的长度可以大于“hell”的长度，反之则不行
+
+        //沿路径绘制文字
+//        Path path = new Path();
+//        RectF rectF = new RectF(100, 100, 300, 400);
+//        path.addRect(rectF, Path.Direction.CW);
+//        canvas.drawPath(path, paint);
+//        paint.setTextSize(36);
+//        paint.setStrokeWidth(2);
+//        //hOffset 从其实位置沿着顺时针或者逆时针偏移，vOffset 大于0往内部收缩，小于0往外部扩张
+//        canvas.drawTextOnPath("hello world", path, 50, -20, paint);
+
+        //绘制自定义字体
+        AssetManager manager = getContext().getAssets();//得到AssetManager
+        Typeface typeface = Typeface.createFromAsset(manager, "test.ttf");//根据路径得到Typeface
+        paint.setTextSize(72);
         paint.setStrokeWidth(2);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawText("hello world", 100, 300, paint);
+        paint.setTypeface(typeface);
+        canvas.drawText("你好 世界", 100, 100, paint);
 
     }
 }
