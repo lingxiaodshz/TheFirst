@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TheFirst</string>
+    <string name="my_accessibility_description">assessiblity_service_test</string>
 </resources>

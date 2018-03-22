@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lingxiao.thefirst">
 
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,6 +32,22 @@
                  <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
          </activity>-->
+
+
+        <service
+            android:name=".accessibility.MyAccessibilityService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessiblity_test" />//在meta-data里申明配置信息
+        </service>
     </application>
+
 
 </manifest>
