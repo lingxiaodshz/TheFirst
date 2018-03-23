@@ -3,9 +3,32 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:windowAnimationStyle">@style/baseAnimation</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="noActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/baseAnimation</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="baseAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/right_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/right_out</item>
+        <item name="android:taskOpenEnterAnimation">@anim/left_in</item>
+        <item name="android:taskOpenExitAnimation">@anim/left_out</item>
+        <item name="android:taskCloseEnterAnimation">@anim/right_in</item>
+        <item name="android:taskCloseExitAnimation">@anim/right_out</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/left_in</item>
+        <item name="android:taskToFrontExitAnimation">@anim/left_out</item>
+        <item name="android:taskToBackEnterAnimation">@anim/right_in</item>
+        <item name="android:taskToBackExitAnimation">@anim/right_out</item>
     </style>
 
 </resources>

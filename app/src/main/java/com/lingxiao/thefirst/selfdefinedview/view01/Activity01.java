@@ -1,20 +1,24 @@
 package com.lingxiao.thefirst.selfdefinedview.view01;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.lingxiao.thefirst.base.BaseActivity;
 import com.lingxiao.thefirst.R;
 
 /**
  * Created by Administrator on 2018/3/16.
  */
 
-public class Activity01 extends Activity {
+public class Activity01 extends BaseActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_01);
+    public int getLayoutResource() {
+        return R.layout.activity_01;
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+        setTitle("基础绘制");
     }
 }
