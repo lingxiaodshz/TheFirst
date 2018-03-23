@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
-        <activity
+        <!--<activity
             android:name=".selfdefinedview.view01.Activity01"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -26,8 +26,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--<activity
+        </activity>-->
+        <activity
             android:name=".selfdefinedview.view02.Activity02"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -35,7 +35,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
+        </activity>
         <!-- <activity android:name=".widget.LastInputActivity">
              <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
