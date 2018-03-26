@@ -67,6 +67,29 @@ public class View02 extends View {
 //        rgn.setPath(ovalPath, new Region(50, 50, 200, 400));
 //        drawRegion(canvas, rgn, paint);
 
+        //绘制区域组合
+//        假设用region1  去组合region2
+//        public enum Op {
+//            DIFFERENCE(0), //最终区域为region1 与 region2不同的区域
+//            INTERSECT(1), // 最终区域为region1 与 region2相交的区域
+//            UNION(2),      //最终区域为region1 与 region2组合一起的区域
+//            XOR(3),        //最终区域为region1 与 region2相交之外的区域
+//            REVERSE_DIFFERENCE(4), //最终区域为region2 与 region1不同的区域
+//            REPLACE(5); //最终区域为为region2的区域
+//        }
+        Rect rect1 = new Rect(200, 100, 300, 400);
+        Rect rect2 = new Rect(100, 200, 400, 300);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawRect(rect1, paint);
+        canvas.drawRect(rect2, paint);
+
+        Region region1 = new Region(rect1);
+        Region region2 = new Region(rect2);
+
+        region1.op(region2, Region.Op.UNION);
+        paint.setColor(Color.GREEN);
+        paint.setStyle(Paint.Style.FILL);
+        drawRegion(canvas, region1, paint);
     }
 
     private void drawRegion(Canvas canvas, Region rgn, Paint paint) {
