@@ -7,6 +7,7 @@
     <include layout="@layout/view_common_toolbar" />
 
     <com.lingxiao.thefirst.selfdefinedview.view03.View03
+        android:id="@+id/view03"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
