@@ -4,8 +4,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -71,5 +74,21 @@ public class View03 extends View {
 //        canvas.scale(0.5f, 3, 100, 100);
 //        canvas.drawRect(rectF, paint);
 
+        //裁剪画布canvas
+//        canvas.drawColor(Color.parseColor("#123456"));
+//        Path path = new Path();
+//        path.addOval(new RectF(100, 100, 400, 300), Path.Direction.CW);
+//        canvas.clipPath(path);
+//        canvas.drawColor(Color.RED);
+
+        //画布的保存与恢复
+        canvas.drawColor(Color.parseColor("#123456"));
+        canvas.save();//保存场景
+        Path path = new Path();
+        path.addCircle(200, 200, 100, Path.Direction.CW);
+        canvas.clipPath(path);
+        canvas.drawColor(Color.RED);
+        canvas.restore();//恢复场景
+        canvas.drawCircle(400, 400, 300, paint);
     }
 }
