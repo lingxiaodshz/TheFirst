@@ -11,6 +11,7 @@
 
     <style name="noActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowAnimationStyle">@style/baseAnimation</item>
+        <item name="android:listDivider">@drawable/recycler_item_divider_margin</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
