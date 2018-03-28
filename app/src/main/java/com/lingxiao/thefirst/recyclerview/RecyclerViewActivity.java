@@ -34,6 +34,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         //注意decoration的divider需要在theme里面去设置，并且不能用color
+        decoration.setDrawable(getResources().getDrawable(R.drawable.recycler_item_divider_margin));
         mRecyclerView.addItemDecoration(decoration);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
