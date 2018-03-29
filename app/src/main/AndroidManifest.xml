@@ -45,8 +45,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
-        <activity
+        <!--<activity
             android:name=".recyclerview.RecyclerViewActivity"
+            android:theme="@style/noActionBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <activity
+            android:name=".constraint.ConstraintActivity"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -43,23 +43,23 @@ public class RecyclerViewActivity extends BaseActivity {
 
         mRecyclerView.setAdapter(new FirstAdapter(this, getData()));
 
-        List<String> list = new ArrayList<>();
-        list.add("abc1");
-        list.add("abc2");
-        list.add("abc2");
-        list.add("abc4");
-        for (int i = list.size() - 1; i >= 0; i--) {
-            if (TextUtils.equals(list.get(i), "abc2")) {
-                list.remove(i);
-            }
-        }
-        Iterator<String> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            if (TextUtils.equals(iterator.next(), "abc2")) {
-                iterator.remove();
-            }
-        }
-        Toast.makeText(this, list.size() + "", Toast.LENGTH_SHORT).show();
+//        List<String> list = new ArrayList<>();
+//        list.add("abc1");
+//        list.add("abc2");
+//        list.add("abc2");
+//        list.add("abc4");
+//        for (int i = list.size() - 1; i >= 0; i--) {
+//            if (TextUtils.equals(list.get(i), "abc2")) {
+//                list.remove(i);
+//            }
+//        }
+//        Iterator<String> iterator = list.iterator();
+//        while (iterator.hasNext()) {
+//            if (TextUtils.equals(iterator.next(), "abc2")) {
+//                iterator.remove();
+//            }
+//        }
+//        Toast.makeText(this, list.size() + "", Toast.LENGTH_SHORT).show();
     }
 
     private List<String> getData() {
