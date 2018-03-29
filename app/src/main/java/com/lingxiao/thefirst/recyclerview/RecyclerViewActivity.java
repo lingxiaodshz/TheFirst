@@ -11,12 +11,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseActivity;
 import com.lingxiao.thefirst.recyclerview.adapter.FirstAdapter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class RecyclerViewActivity extends BaseActivity {
@@ -39,11 +42,29 @@ public class RecyclerViewActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mRecyclerView.setAdapter(new FirstAdapter(this, getData()));
+
+        List<String> list = new ArrayList<>();
+        list.add("abc1");
+        list.add("abc2");
+        list.add("abc2");
+        list.add("abc4");
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (TextUtils.equals(list.get(i), "abc2")) {
+                list.remove(i);
+            }
+        }
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            if (TextUtils.equals(iterator.next(), "abc2")) {
+                iterator.remove();
+            }
+        }
+        Toast.makeText(this, list.size() + "", Toast.LENGTH_SHORT).show();
     }
 
     private List<String> getData() {
         List<String> list = new ArrayList<>();
-        for(int i=0;i<20;i++) {
+        for (int i = 0; i < 20; i++) {
             list.add("测试条目" + i);
         }
         return list;
