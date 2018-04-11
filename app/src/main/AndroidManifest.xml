@@ -45,6 +45,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
+        <activity
+            android:name=".selfdefinedview.view04.Activity04"
+            android:theme="@style/noActionBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--<activity
             android:name=".recyclerview.RecyclerViewActivity"
             android:theme="@style/noActionBarTheme">
@@ -54,7 +63,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
-        <activity
+        <!--<activity
             android:name=".constraint.ConstraintActivity"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -62,7 +71,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>-->
         <!-- <activity android:name=".widget.LastInputActivity">
              <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
