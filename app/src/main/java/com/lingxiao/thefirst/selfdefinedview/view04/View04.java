@@ -7,7 +7,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.Nullable;
@@ -85,8 +88,46 @@ public class View04 extends View {
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_big_pic);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         //第二个参数是将bitmap中的这个位置截取，如果想显示整个bitmap需要设置为null
-        canvas.drawBitmap(bitmap, null,
-                new Rect(100, 100, 200, 200), paint);
+        canvas.drawBitmap(createCircleImage(bitmap, 100), null,
+                new Rect(100, 100, 300, 300), paint);
+//        canvas.drawBitmap(bitmap, null,
+//                new Rect(100, 100, 200, 200), paint);
 
+
+    }
+
+    public static Bitmap createCircleImage(Bitmap source, int min) {
+        Paint paint = new Paint();
+//        paint.setStyle(Paint.Style.STROKE);
+//        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
+        paint.setAntiAlias(true);
+        paint.setFilterBitmap(true);
+        Bitmap target = Bitmap.createBitmap(min, min, source.getConfig());
+        /**
+         * 产生一个同样大小的画布
+         */
+        Canvas canvas = new Canvas(target);
+
+        /**
+         * 首先绘制圆形
+         */
+
+        canvas.drawCircle(source.getWidth() / 2, source.getHeight() / 2, min / 2, paint);
+        /**
+         * 使用SRC_IN
+         */
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+
+        /**
+         * 给Canvas加上抗锯齿标志
+         */
+        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
+
+        /**
+         * 绘制图片
+         */
+//        canvas.drawBitmap(source, 0, 0, paint);
+        canvas.drawBitmap(source, null, new Rect(0, 0, min, min), paint);
+        return target;
     }
 }
