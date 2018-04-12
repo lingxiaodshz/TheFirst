@@ -1,28 +1,22 @@
 package com.lingxiao.thefirst.selfdefinedview.view05;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
-import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.lingxiao.thefirst.R;
 
 /**
  * Created by Administrator on 2018/3/26.
  */
 
 public class View05 extends View {
-    private Paint paint;
+    private Paint mPaint;
     private Path mPath;
 
     public View05(Context context) {
@@ -41,11 +35,12 @@ public class View05 extends View {
     }
 
     private void initView(Context context) {
-        paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(5);
-        paint.setColor(Color.BLUE);
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setARGB(255,200,100,100);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setStrokeWidth(5);
+//        mPaint.setColor(Color.BLUE);
 
         mPath = new Path();
     }
@@ -54,6 +49,16 @@ public class View05 extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        //注意：使用ColorMatrix时不能使用setColor给画笔设置颜色值，必须采用ARGB的方式
+        // 生成色彩矩阵
+        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
+                0, 0, 0, 0, 0,
+                0, 1, 0, 0, 0,
+                0, 0, 1, 0, 0,
+                0, 0, 0, 0.5f, 0,
+        });
+        mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
 
+        canvas.drawRect(0, 0, 300, 300, mPaint);
     }
 }

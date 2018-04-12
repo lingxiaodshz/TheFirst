@@ -6,7 +6,7 @@
 
     <include layout="@layout/view_common_toolbar" />
 
-    <com.lingxiao.thefirst.selfdefinedview.view04.View04
+    <com.lingxiao.thefirst.selfdefinedview.view05.View05
         android:id="@+id/view05"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
