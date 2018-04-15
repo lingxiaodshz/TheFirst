@@ -4,12 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -70,16 +66,25 @@ public class View05 extends View {
 //        canvas.drawRect(0, 0, 300, 300, mPaint);
 
         //绘制原始位图
-        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, 500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
-        canvas.translate(510, 0);
-        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
-                1, 0, 0, 0, 0,
-                0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0,
-                0, 0, 0, 0.5f, 0,
-        });
-        mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, 500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
+//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, 500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
+//        canvas.translate(510, 0);
+//        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
+//                1, 0, 0, 0, 0,
+//                0, 0, 0, 0, 0,
+//                0, 0, 0, 0, 0,
+//                0, 0, 0, 0.5f, 0,
+//        });
+//        mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
+//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, 500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
+
+//        //LightingColorFilter使用
+//        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_blue_pic);
+//        int width  = 500;
+//        int height = width * mBitmap.getHeight()/mBitmap.getWidth();
+//        canvas.drawBitmap(mBitmap,null,new Rect(0,0,width,height),mPaint);
+//        canvas.translate(0, 550);
+//        mPaint.setColorFilter(new LightingColorFilter(0x00ff00, 0));
+//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, width, height), mPaint);
 
     }
 }
