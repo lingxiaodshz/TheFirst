@@ -66,6 +66,17 @@
             </intent-filter>
         </activity>
         <!--<activity
+            android:name=".selfdefinedview.view06.Activity06"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/noActionBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <!--<activity
             android:name=".recyclerview.RecyclerViewActivity"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
