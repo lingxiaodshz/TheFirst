@@ -54,7 +54,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
-        <activity
+       <!-- <activity
             android:name=".selfdefinedview.view05.Activity05"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
@@ -64,8 +64,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--<activity
+        </activity>-->
+        <activity
             android:name=".selfdefinedview.view06.Activity06"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
@@ -75,7 +75,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
+        </activity>
         <!--<activity
             android:name=".recyclerview.RecyclerViewActivity"
             android:theme="@style/noActionBarTheme">

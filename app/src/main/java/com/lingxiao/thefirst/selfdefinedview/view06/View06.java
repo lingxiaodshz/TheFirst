@@ -65,17 +65,19 @@ public class View06 extends View {
 //
 //        canvas.drawRect(0, 0, 300, 300, mPaint);
 
-        //绘制原始位图
-//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, 500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
+//        //ColorMatrixColorFilter使用
+//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0,
+//                500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
 //        canvas.translate(510, 0);
 //        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
-//                1, 0, 0, 0, 0,
-//                0, 0, 0, 0, 0,
-//                0, 0, 0, 0, 0,
-//                0, 0, 0, 0.5f, 0,
+//                1 / 2f, 1 / 2f, 1 / 2f, 0, 0,
+//                1 / 3f, 1 / 3f, 1 / 3f, 0, 0,
+//                1 / 4f, 1 / 4f, 1 / 4f, 0, 0,
+//                0, 0, 0, 1, 0
 //        });
 //        mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, 500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
+//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0,
+//                500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
 
 //        //LightingColorFilter使用
 //        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_blue_pic);
