@@ -5,11 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -69,19 +73,21 @@ public class View06 extends View {
 //
 //        canvas.drawRect(0, 0, 300, 300, mPaint);
 
-//        //ColorMatrixColorFilter使用
-//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0,
-//                500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
-//        canvas.translate(510, 0);
-//        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
-//                1 / 2f, 1 / 2f, 1 / 2f, 0, 0,
-//                1 / 3f, 1 / 3f, 1 / 3f, 0, 0,
-//                1 / 4f, 1 / 4f, 1 / 4f, 0, 0,
-//                0, 0, 0, 1, 0
-//        });
-//        mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0,
-//                500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
+        //ColorMatrixColorFilter使用
+        mPaint.reset();
+        mPaint.setARGB(255, 200, 100, 100);
+        canvas.drawBitmap(mBitmap, null, new Rect(0, 0,
+                500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
+        canvas.translate(510, 0);
+        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
+                1 / 2f, 1 / 2f, 1 / 2f, 0, 0,
+                1 / 3f, 1 / 3f, 1 / 3f, 0, 0,
+                1 / 4f, 1 / 4f, 1 / 4f, 0, 0,
+                0, 0, 0, 1, 0
+        });
+        mPaint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
+        canvas.drawBitmap(mBitmap, null, new Rect(0, 0,
+                500, 500 * mBitmap.getHeight() / mBitmap.getWidth()), mPaint);
 
 //        //LightingColorFilter使用
 //        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_blue_pic);
@@ -92,30 +98,18 @@ public class View06 extends View {
 //        mPaint.setColorFilter(new LightingColorFilter(0x00ff00, 0));
 //        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, width, height), mPaint);
 
-//        int width  = 500;
-//        int height = width * mBmp.getHeight()/mBmp.getWidth();
-//        mPaint.setColor(Color.RED);
+//        int width = 500;
+//        int hight = width * mBitmap.getHeight() / mBitmap.getWidth();
+//        mPaint.setColor(Color.YELLOW);
 //
-//        int layerID = canvas.saveLayer(0,0,width,height,mPaint,Canvas.ALL_SAVE_FLAG);
+//        int layerID = canvas.saveLayer(0, 0, width, hight, mPaint, Canvas.ALL_SAVE_FLAG);
 //
-//        canvas.drawBitmap(mBmp,null,new Rect(0,0,width,height),mPaint);
-//        mPaint.setXfermode(new AvoidXfermode(Color.WHITE,100, AvoidXfermode.Mode.TARGET));
-//        canvas.drawRect(0,0,width,height,mPaint);
+//        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, width, hight), mPaint);
+////        mPaint.setXfermode(new AvoidXfermode(Color.WHITE, 100, AvoidXfermode.Mode.TARGET));
+//        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.ADD));
+//        canvas.drawRect(0, 0, width, hight, mPaint);
 //
 //        canvas.restoreToCount(layerID);
-
-        int width = 500;
-        int hight = width * mBitmap.getHeight() / mBitmap.getWidth();
-        mPaint.setColor(Color.YELLOW);
-
-        int layerID = canvas.saveLayer(0, 0, width, hight, mPaint, Canvas.ALL_SAVE_FLAG);
-
-        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, width, hight), mPaint);
-//        mPaint.setXfermode(new AvoidXfermode(Color.WHITE, 100, AvoidXfermode.Mode.TARGET));
-        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.ADD));
-        canvas.drawRect(0, 0, width, hight, mPaint);
-
-        canvas.restoreToCount(layerID);
 
     }
 }
