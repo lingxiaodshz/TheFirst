@@ -4,8 +4,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -87,6 +91,31 @@ public class View06 extends View {
 //        canvas.translate(0, 550);
 //        mPaint.setColorFilter(new LightingColorFilter(0x00ff00, 0));
 //        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, width, height), mPaint);
+
+//        int width  = 500;
+//        int height = width * mBmp.getHeight()/mBmp.getWidth();
+//        mPaint.setColor(Color.RED);
+//
+//        int layerID = canvas.saveLayer(0,0,width,height,mPaint,Canvas.ALL_SAVE_FLAG);
+//
+//        canvas.drawBitmap(mBmp,null,new Rect(0,0,width,height),mPaint);
+//        mPaint.setXfermode(new AvoidXfermode(Color.WHITE,100, AvoidXfermode.Mode.TARGET));
+//        canvas.drawRect(0,0,width,height,mPaint);
+//
+//        canvas.restoreToCount(layerID);
+
+        int width = 500;
+        int hight = width * mBitmap.getHeight() / mBitmap.getWidth();
+        mPaint.setColor(Color.YELLOW);
+
+        int layerID = canvas.saveLayer(0, 0, width, hight, mPaint, Canvas.ALL_SAVE_FLAG);
+
+        canvas.drawBitmap(mBitmap, null, new Rect(0, 0, width, hight), mPaint);
+//        mPaint.setXfermode(new AvoidXfermode(Color.WHITE, 100, AvoidXfermode.Mode.TARGET));
+        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.ADD));
+        canvas.drawRect(0, 0, width, hight, mPaint);
+
+        canvas.restoreToCount(layerID);
 
     }
 }
