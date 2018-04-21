@@ -11,14 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".MainActivity">
+
+        <!--
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-        <!--<activity
+        </activity>
+        -->
+        <!--
+        <activity
             android:name=".selfdefinedview.view01.Activity01"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -26,8 +30,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-        <!--<activity
+        </activity>
+        -->
+        <!--
+        <activity
             android:name=".selfdefinedview.view02.Activity02"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -35,8 +41,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-        <!--<activity
+        </activity>
+        -->
+        <!--
+        <activity
             android:name=".selfdefinedview.view03.Activity03"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -44,8 +52,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-        <!--<activity
+        </activity>
+        -->
+        <!--
+        <activity
             android:name=".selfdefinedview.view04.Activity04"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -53,8 +63,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-       <!-- <activity
+        </activity>
+        -->
+        <!--
+        <activity
             android:name=".selfdefinedview.view05.Activity05"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
@@ -64,8 +76,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-        <activity
+        </activity>
+        -->
+        <!--<activity
             android:name=".selfdefinedview.view06.Activity06"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
@@ -75,8 +88,23 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>-->
+
+        <activity
+            android:name=".nestedscroll.NestedScrollingActivity"
+            android:label="@string/title_activity_nested_scrolling"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/noActionBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <!--<activity
+
+        <!--
+        <activity
             android:name=".recyclerview.RecyclerViewActivity"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -84,8 +112,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-        <!--<activity
+        </activity>
+        -->
+        <!--
+        <activity
             android:name=".constraint.ConstraintActivity"
             android:theme="@style/noActionBarTheme">
             <intent-filter>
@@ -93,15 +123,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
-        <!-- <activity android:name=".widget.LastInputActivity">
+        </activity>
+        -->
+        <!--
+         <activity android:name=".widget.LastInputActivity">
              <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
 
                  <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
-         </activity>-->
-
+         </activity>
+        -->
 
         <service
             android:name=".accessibility.MyAccessibilityService"
@@ -112,11 +144,13 @@
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
+
             <meta-data
                 android:name="android.accessibilityservice"
-                android:resource="@xml/accessiblity_test" />//在meta-data里申明配置信息
+                android:resource="@xml/accessiblity_test" />
+            //在meta-data里申明配置信息
         </service>
-    </application>
 
+    </application>
 
 </manifest>
