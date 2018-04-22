@@ -90,8 +90,20 @@
             </intent-filter>
         </activity>-->
 
-        <activity
+       <!-- <activity
             android:name=".nestedscroll.NestedScrollingActivity"
+            android:label="@string/title_activity_nested_scrolling"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/noActionBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+        <activity
+            android:name=".nestedscroll.test1.NestedScrollingTest1Activity"
             android:label="@string/title_activity_nested_scrolling"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
