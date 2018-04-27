@@ -1,0 +1,22 @@
+<activity
+            android:name=".map.MapFirstActiviy"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/noActionBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+</activity>
+"android.intent.action.MAIN"表示这个activity是当前应用程序的主activity，
+"android.intent.category.LAUNCHER"表示当前activity在lancher中加载
+
+Lancher的intent声明
+<intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.HOME"/>
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.MONKEY" />
+</intent-filter>
+"android.intent.category.HOME"表示配置到自己app的activity中，按home键回到主页时会弹出一个选择列表，
+让你选择是默认的Launcher还是自己配置的app，但是我没演示出来效果
