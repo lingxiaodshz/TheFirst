@@ -3,6 +3,8 @@ package com.lingxiao.thefirst.map;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -16,11 +18,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MapFirstActiviy extends BaseActivity {
+public class MapFirstActiviy extends BaseActivity implements View.OnClickListener {
 
-    MapView mMapView = null;
+    private MapView mMapView = null;
     //初始化地图控制器对象
-    AMap aMap = null;
+    private AMap aMap = null;
+    private TextView mTvStandard;//标准地图
+    private TextView mTvSatellite;//卫星地图
+    private TextView mTvNightMode;//夜间模式
+
 
     @Override
     public int getLayoutResource() {
@@ -31,10 +37,20 @@ public class MapFirstActiviy extends BaseActivity {
     public void initView(@Nullable Bundle savedInstanceState) {
         setTitle("地图测试一");
 
+
         //获取地图控件引用
         mMapView = (MapView) findViewById(R.id.map);
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         mMapView.onCreate(savedInstanceState);
+
+        mTvStandard = findViewById(R.id.tv_standard);
+        mTvSatellite = findViewById(R.id.tv_satellite);
+        mTvNightMode = findViewById(R.id.tv_night_mode);
+
+        mTvStandard.setOnClickListener(this);
+        mTvSatellite.setOnClickListener(this);
+        mTvNightMode.setOnClickListener(this);
+
 
         if (aMap == null) {
             aMap = mMapView.getMap();
@@ -133,5 +149,26 @@ public class MapFirstActiviy extends BaseActivity {
 
         aMap.showMapText(false);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_standard:
+                if (aMap != null) {
+                    aMap.setMapType(AMap.MAP_TYPE_NORMAL);
+                }
+                break;
+            case R.id.tv_satellite:
+                if (aMap != null) {
+                    aMap.setMapType(AMap.MAP_TYPE_SATELLITE);
+                }
+                break;
+            case R.id.tv_night_mode:
+                if (aMap != null) {
+                    aMap.setMapType(AMap.MAP_TYPE_NIGHT);
+                }
+                break;
+        }
     }
 }

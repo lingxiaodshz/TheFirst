@@ -6,11 +6,52 @@
 
     <include layout="@layout/view_common_toolbar" />
 
-    <com.amap.api.maps.MapView
-        android:id="@+id/map"
-
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        android:layout_height="match_parent"/>
+        <com.amap.api.maps.MapView
+            android:id="@+id/map"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_standard"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="标准地图"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_satellite"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:layout_alignTop="@id/tv_standard"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tv_standard"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="卫星地图"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_night_mode"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:layout_alignTop="@id/tv_satellite"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tv_satellite"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="夜间模式"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
 
 </LinearLayout>
