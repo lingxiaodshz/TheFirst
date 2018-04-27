@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.lingxiao.thefirst.R;
@@ -46,6 +47,8 @@ public class MapFirstActiviy extends BaseActivity {
         myLocationStyle = new MyLocationStyle();
         //设置是否显示定位小蓝点，用于满足只想使用定位，不想使用定位小蓝点的场景，设置false以后图面上不再有定位蓝点的概念，但是会持续回调位置信息。
         myLocationStyle.showMyLocation(true);
+        //设置只定位一次，且将视角移动到地图中心点。
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);
         //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
         myLocationStyle.interval(2000);
         //设置定位蓝点的Style
@@ -55,7 +58,11 @@ public class MapFirstActiviy extends BaseActivity {
         // 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         aMap.setMyLocationEnabled(true);
 
-
+        //3D 地图 SDK中默认会关闭室内地图显示，如有需要可使用类AMap 中的 showIndoorMap(boolean enable)自行开启。
+        //true：显示室内地图；false：不显示；
+        aMap.showIndoorMap(true);
+        //设置缩放级别
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(17));
 
 //        setMapCustomStyleFile(this);
     }
