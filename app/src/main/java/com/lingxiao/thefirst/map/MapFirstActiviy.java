@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseActivity;
@@ -23,6 +24,7 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
     private MapView mMapView = null;
     //初始化地图控制器对象
     private AMap aMap = null;
+    private UiSettings mUiSettings;
     private TextView mTvStandard;//标准地图
     private TextView mTvSatellite;//卫星地图
     private TextView mTvNightMode;//夜间模式
@@ -54,6 +56,7 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
 
         if (aMap == null) {
             aMap = mMapView.getMap();
+            mUiSettings = aMap.getUiSettings();
         }
 
         //定位蓝点
@@ -79,6 +82,14 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
         aMap.showIndoorMap(true);
         //设置缩放级别
         aMap.moveCamera(CameraUpdateFactory.zoomTo(17));
+
+        //设置地图底图语言，目前支持中文底图和英文底图
+        aMap.setMapLanguage(AMap.CHINESE);
+
+        //设置缩放图标是否显示
+        mUiSettings.setZoomControlsEnabled(false);
+        //设置指南针是否显示
+        mUiSettings.setCompassEnabled(false);
 
 //        setMapCustomStyleFile(this);
     }
