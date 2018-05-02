@@ -100,8 +100,7 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = new MenuInflater(this);
-        inflater.inflate(R.menu.menu_activity_map_first, menu);
+        getMenuInflater().inflate(R.menu.menu_activity_map_first, menu);
         return true;
     }
 
