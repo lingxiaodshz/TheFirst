@@ -3,6 +3,10 @@ package com.lingxiao.thefirst.map;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -92,6 +96,28 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
         mUiSettings.setCompassEnabled(false);
 
 //        setMapCustomStyleFile(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = new MenuInflater(this);
+        inflater.inflate(R.menu.menu_activity_map_first, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.language) {
+            if (TextUtils.equals("中文", item.getTitle())) {
+                item.setTitle("英文");
+                aMap.setMapLanguage(AMap.CHINESE);
+            } else {
+                item.setTitle("中文");
+                aMap.setMapLanguage(AMap.ENGLISH);
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
