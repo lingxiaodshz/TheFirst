@@ -6,5 +6,21 @@
         android:id="@+id/language"
         android:title="英语"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/location"
+        android:title="显示定位"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/zoom"
+        android:title="显示缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/compass"
+        android:title="显示指南针"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/scale"
+        android:title="显示比例尺"
+        app:showAsAction="never" />
 
 </menu>

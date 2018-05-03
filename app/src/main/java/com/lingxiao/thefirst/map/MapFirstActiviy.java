@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -77,7 +76,7 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
         //设置定位蓝点的Style
         aMap.setMyLocationStyle(myLocationStyle);
         // 设置默认定位按钮是否显示，非必需设置。
-        aMap.getUiSettings().setMyLocationButtonEnabled(true);
+        aMap.getUiSettings().setMyLocationButtonEnabled(false);
         // 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         aMap.setMyLocationEnabled(true);
 
@@ -106,17 +105,55 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.language) {
-            if (TextUtils.equals("中文", item.getTitle())) {
-                item.setTitle("英文");
-                aMap.setMapLanguage(AMap.CHINESE);
-            } else {
-                item.setTitle("中文");
-                aMap.setMapLanguage(AMap.ENGLISH);
-            }
-            return true;
+        switch (item.getItemId()) {
+            case R.id.language:
+                if (TextUtils.equals("中文", item.getTitle())) {
+                    item.setTitle("英文");
+                    aMap.setMapLanguage(AMap.CHINESE);
+                } else {
+                    item.setTitle("中文");
+                    aMap.setMapLanguage(AMap.ENGLISH);
+                }
+                return true;
+            case R.id.location:
+                if (TextUtils.equals("显示定位", item.getTitle())) {
+                    item.setTitle("隐藏定位");
+                    mUiSettings.setMyLocationButtonEnabled(true);
+                } else {
+                    item.setTitle("显示定位");
+                    mUiSettings.setMyLocationButtonEnabled(false);
+                }
+                return true;
+            case R.id.zoom:
+                if (TextUtils.equals("显示缩放", item.getTitle())) {
+                    item.setTitle("隐藏缩放");
+                    mUiSettings.setZoomControlsEnabled(true);
+                } else {
+                    item.setTitle("显示缩放");
+                    mUiSettings.setZoomControlsEnabled(false);
+                }
+                return true;
+            case R.id.compass:
+                if (TextUtils.equals("显示指南针", item.getTitle())) {
+                    item.setTitle("隐藏指南针");
+                    mUiSettings.setCompassEnabled(true);
+                } else {
+                    item.setTitle("显示指南针");
+                    mUiSettings.setCompassEnabled(false);
+                }
+                return true;
+            case R.id.scale:
+                if (TextUtils.equals("显示比例尺", item.getTitle())) {
+                    item.setTitle("隐藏比例尺");
+                    mUiSettings.setScaleControlsEnabled(true);
+                } else {
+                    item.setTitle("显示比例尺");
+                    mUiSettings.setScaleControlsEnabled(false);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
