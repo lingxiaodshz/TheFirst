@@ -9,15 +9,38 @@ Boot Loader——>初始化内核——>。。。。。。
 ActivityManagerServices（AMS）：它是一个服务端对象，负责所有的Activity的生命周期，
       ActivityThread会通过Binder与之交互，而AMS与Zygote之间进行交互则是通过Socket通信（IPC通信在之后会总结到）
 ActivityThread：它也就是我们俗称的UI线程/主线程，它里面存在一个main()方法，
-      这也是APP的真正入口，当APP启动时，就会启动ActivityThread中的main方法，它会初始化一些对象，然后开启消息循环队列（之后总结），之后就会Looper.loop死循环，如果有消息就执行，没有就等着，也就是事件驱动模型（edt）的原理。
+      这也是APP的真正入口，当APP启动时，就会启动ActivityThread中的main方法，它会初始化一些对象，然后开启消息循环队列（之后总结），
+      之后就会Looper.loop死循环，如果有消息就执行，没有就等着，也就是事件驱动模型（edt）的原理。
+      下面是ActivityThread控制Activity生命周期的部分代码
+          private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
+              ...
+               if (r.isPersistable()) {
+                    mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);
+               } else {
+                    mInstrumentation.callActivityOnCreate(activity, r.state);
+               }
+              ...
+          }
+
+      activityThread.performLaunchActivity() --> activity.attach() --> mInstrumentation.callActivityOnCreate()
+      --> activity.performCreate() --> activity.onCreate()
+
 ApplicationThread：它实现了IBinder接口，是Activity整个框架中客户端和服务端AMS之间通信的接口，
       同时也是ActivityThread的内部类。这样就有效的把ActivityThread和AMS绑定在一起了。
 Instrumentation：这个东西我把它理解为ActivityThread的一个工具类，也算是一个劳动者吧，
       对于生命周期的所有操作例如onCreate最终都是直接由它来执行的。
+      下面是instrumentation调用activity的onCreate方法
+          public void callActivityOnCreate(Activity activity, Bundle icicle,
+                  PersistableBundle persistentState) {
+              prePerformCreate(activity);
+              activity.performCreate(icicle, persistentState);
+              postPerformCreate(activity);
+          }
 
 当Zygote被初始化的时候，会fork出System Server进程，这个进程在整个的Android进程中是非常重要的一个，地位和Zygote等同，
 它是属于Application Framework层的，Android中的所有服务，例如AMS, WindowsManager,
 PackageManagerService等等都是由这个SystemServer fork出来的。所以它的地位可见一斑。
 而当System Server进程开启的时候，就会初始化AMS，同时，会加载本地系统的服务库，创建系统上下文，
 创建ActivityThread及开启各种服务等等。而在这之后，就会开启系统的Launcher程序，完成系统界面的加载与显示。
+
 
