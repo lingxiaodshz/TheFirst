@@ -1,0 +1,53 @@
+https://www.jianshu.com/p/607ff4e79a13
+
+Class 可以说是反射能够实现的基础；注意这里说的 Class与 class 关键字不是同一种东西。
+class 关键字是在声明 java 类时使用的；而 Class 是 java JDK 提供的一个类,完整路径为 java.lang.Class，
+本质上与 Math, String 或者你自己定义各种类没什么区别。
+
+对于每一种类，Java 虚拟机都会初始化出一个 Class 类型的实例，
+每当我们编写并且编译一个新创建的类就会产生一个对应 Class 对象，
+并且这个 Class 对象会被保存在同名 .class 文件里。
+当我们 new 一个新对象或者引用静态成员变量时，
+Java 虚拟机(JVM)中的类加载器系统会将对应 Class 对象加载到 JVM 中，
+然后 JVM 再根据这个类型信息相关的Class 对象创建我们需要实例对象或者提供静态变量的引用值。
+
+需要特别注意的是，每个 class（注意 class 是小写，代表普通类）类，
+无论创建多少个实例对象，在 JVM 中都对应同一个 Class 对象。
+public class Animal {
+    private String name;
+    private int age;
+    public Animal(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    @Override
+    public String toString() {
+        return "Animal : name = " + name + " age = " + age;
+    }
+}
+
+ public class TestReflection{
+    private static final String TAG = "Reflection";
+    public void testReflection(){
+        //获取Animal类的Class对象
+        Class c = Animal.class;
+        try {
+            //通过Class对象反射获取Animal类的构造方法
+            Constructor constructor = c.getConstructor(String.class, int.class);
+            //调用构造方法获取Animal实例
+            Animal animal = (Animal) constructor.newInstance( "Jack", 3);
+            //将构造出来的Animal对象打印出来
+            Log.d(TAG, animal.toString());
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+但是如果并不能直接导入 Animal 类呢，如果构造方法都是 private 的呢？这个时候反射就能大展身手了。
