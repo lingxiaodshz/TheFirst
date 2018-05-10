@@ -1,13 +1,26 @@
 package com.lingxiao.thefirst.map;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -18,9 +31,14 @@ import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseActivity;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class MapFirstActiviy extends BaseActivity implements View.OnClickListener {
 
@@ -32,6 +50,21 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
     private TextView mTvSatellite;//卫星地图
     private TextView mTvNightMode;//夜间模式
 
+    protected String[] needPermissions = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            //不检测GPS是否开启
+//            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE
+    };
+    private static final int PERMISSON_REQUESTCODE = 0;
+    private static final int SETTING_RESULT = 100;
+
+    /**
+     * 判断是否需要检测，防止不停的弹框
+     */
+    private boolean isNeedCheck = true;
 
     @Override
     public int getLayoutResource() {
@@ -57,6 +90,10 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
         mTvNightMode.setOnClickListener(this);
 
 
+        initMapView();
+    }
+
+    private void initMapView() {
         if (aMap == null) {
             aMap = mMapView.getMap();
             mUiSettings = aMap.getUiSettings();
@@ -76,7 +113,7 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
         //设置定位蓝点的Style
         aMap.setMyLocationStyle(myLocationStyle);
         // 设置默认定位按钮是否显示，非必需设置。
-        aMap.getUiSettings().setMyLocationButtonEnabled(false);
+        // aMap.getUiSettings().setMyLocationButtonEnabled(true);
         // 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         aMap.setMyLocationEnabled(true);
 
@@ -105,6 +142,10 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (aMap == null) {
+            aMap = mMapView.getMap();
+            mUiSettings = aMap.getUiSettings();
+        }
         switch (item.getItemId()) {
             case R.id.language:
                 if (TextUtils.equals("中文", item.getTitle())) {
@@ -151,9 +192,62 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
                     mUiSettings.setScaleControlsEnabled(false);
                 }
                 return true;
+            case R.id.shot:
+                mapScreenShot();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+    }
+
+    //地图截屏
+    private void mapScreenShot() {
+        aMap.getMapScreenShot(new AMap.OnMapScreenShotListener() {
+            @Override
+            public void onMapScreenShot(Bitmap bitmap) {
+
+            }
+
+            @Override
+            public void onMapScreenShot(Bitmap bitmap, int status) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+                if (null == bitmap) {
+                    return;
+                }
+                try {
+                    FileOutputStream fos = new FileOutputStream(
+                            Environment.getExternalStorageDirectory() + "/test_"
+                                    + sdf.format(new Date()) + ".png");
+                    boolean b = bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                    try {
+                        fos.flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    StringBuffer buffer = new StringBuffer();
+                    if (b)
+                        buffer.append("截屏成功 ");
+                    else {
+                        buffer.append("截屏失败 ");
+                    }
+                    if (status != 0)
+                        buffer.append("地图渲染完成，截屏无网格");
+                    else {
+                        buffer.append("地图未渲染完成，截屏有网格");
+                    }
+                    Toast.makeText(MapFirstActiviy.this, buffer.toString(), Toast.LENGTH_SHORT).show();
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
@@ -166,6 +260,9 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
     @Override
     protected void onResume() {
         super.onResume();
+        if (isNeedCheck) {
+            checkPermissions(needPermissions);
+        }
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
         mMapView.onResume();
     }
@@ -242,6 +339,104 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
                     aMap.setMapType(AMap.MAP_TYPE_NIGHT);
                 }
                 break;
+        }
+    }
+
+    //检查权限
+    private void checkPermissions(String... permissions) {
+        //获取权限列表
+        List<String> needRequestPermissonList = findDeniedPermissions(permissions);
+        if (null != needRequestPermissonList
+                && needRequestPermissonList.size() > 0) {
+            //list.toarray将集合转化为数组
+            ActivityCompat.requestPermissions(this,
+                    needRequestPermissonList.toArray(new String[needRequestPermissonList.size()]),
+                    PERMISSON_REQUESTCODE);
+        } else {
+            initMapView();
+        }
+    }
+
+    //获取权限集中需要申请权限的列表
+    private List<String> findDeniedPermissions(String[] permissions) {
+        List<String> needRequestPermissonList = new ArrayList<String>();
+        //for (循环变量类型 循环变量名称 : 要被遍历的对象)
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this,
+                    permission) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.shouldShowRequestPermissionRationale(
+                    this, permission)) {
+                needRequestPermissonList.add(permission);
+            }
+        }
+        return needRequestPermissonList;
+    }
+
+    //检测是否说有的权限都已经授权
+    private boolean verifyPermissions(int[] grantResults) {
+        for (int result : grantResults) {
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] paramArrayOfInt) {
+        if (requestCode == PERMISSON_REQUESTCODE) {
+            if (!verifyPermissions(paramArrayOfInt)) {      //没有授权
+                showMissingPermissionDialog();              //显示提示信息
+                isNeedCheck = false;
+            } else {
+                initMapView();
+            }
+        }
+    }
+
+    //显示提示信息
+    private void showMissingPermissionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("开启定位");
+        builder.setMessage("是否开启定位权限");
+
+        // 拒绝, 退出应用
+        builder.setNegativeButton("取消",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+        builder.setPositiveButton("设置",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startAppSettings();
+                    }
+                });
+
+        builder.setCancelable(false);
+
+        builder.show();
+    }
+
+    //启动应用的设置
+    private void startAppSettings() {
+        Intent intent = new Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        intent.setData(Uri.parse("package:" + getPackageName()));
+        startActivityForResult(intent, SETTING_RESULT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SETTING_RESULT) {
+            checkPermissions(needPermissions);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }
