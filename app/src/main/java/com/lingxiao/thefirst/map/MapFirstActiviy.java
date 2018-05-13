@@ -15,7 +15,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -89,8 +88,7 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
         mTvSatellite.setOnClickListener(this);
         mTvNightMode.setOnClickListener(this);
 
-
-        initMapView();
+        checkPermissions(needPermissions);
     }
 
     private void initMapView() {
@@ -260,9 +258,9 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
     @Override
     protected void onResume() {
         super.onResume();
-        if (isNeedCheck) {
-            checkPermissions(needPermissions);
-        }
+//        if (isNeedCheck) {
+//            checkPermissions(needPermissions);
+//        }
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
         mMapView.onResume();
     }

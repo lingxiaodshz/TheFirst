@@ -1,0 +1,46 @@
+第一题 谈谈你对android系统（体系）架构的理解
+Linux操作系统为核心，从上往下，依赖关系。
+应用程序层：包括系统应用以及第三方应用。
+应用程序框架：提供应用开发所必须的一些API框架，是软件复用的重要手段
+库：android运行时（核心包（相当于JDK提供的包），虚拟机（优化过的JVM））；C/C++的一些库
+Linux核心：提供了电源管理、进程调度、内存管理、网络协议栈、驱动模型等核心系统服务
+Linux kernel -> Library (Runtime) -> framwork -> application
+
+第二题 Android中的四大组件以及应用场景
+1. Activity：在Android应用中负责与用户交互的组件
+2. Service：常用于为其他组件提供后台服务或者监控其他组件的运行状态。经常用于执行一些耗时操作。
+3. BroadcastReceiver：用于监听应用程序中的其他组件。
+4. ContentProvider：Android应用程序之间实现实时数据交换。
+
+第三题 生命周期问题
+注意：
+1. 当打开新的Activity，采用透明主题的时候，当前Activity不会回调onStop
+2. onCreate和onDestroy配对，onStart和onStop配对（是否可见），onResume和onPause配对（是否在前台，可以与用户交互）
+3. 打开新的Activity的时候，相关的Log为：
+       Main1Activity: onPause
+       Main2Activity: onCreate
+       Main2Activity: onStart
+       Main2Activity: onResume
+       MainA1ctivity: onStop
+异常状态下的生命周期：
+资源相关的系统配置发生改变或者资源不足：例如屏幕旋转，当前Activity会销毁，
+并且在onStop之前回调onSaveInstanceState保存数据，再重新创建Activity的时候在onStart
+之后回调onRestoreInstanceState。
+正常启动
+   Activity: onCreate
+   Fragment: onAttach
+   Fragment: onCreate
+   Fragment: onCreateView
+   Fragment：onViewCreated
+   Fragment: onActivityCreated
+   Activity: onStart
+   Activity: onResume
+正常退出
+   Activity: onPause
+   Activity: onStop
+   Fragment: onDestroyView
+   Fragment: onDestroy
+   Fragment: onDetach
+   Activity: onDestroy
+
+第四题 Activity的启动模式
