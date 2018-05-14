@@ -1,0 +1,132 @@
+浅拷贝---能复制变量，如果对象内还有对象，则只能复制对象的地址
+深拷贝---能复制变量，也能复制当前对象的 内部对象
+
+代码范例
+public class mytest {
+    public static void main(String[] args) {
+        Parent item1 = new Parent("john", 10);
+        Parent item2 = item1.clone();
+
+        System.out.println("parent1 = " + item1.toString());
+        System.out.println("parent2 = " + item2.toString());
+    }
+
+    public static class Parent implements Cloneable{
+        String name = "";
+        int age = 0;
+        Parent (String n, int age){
+            this.name = n;
+            this.age = age;
+        }
+
+        public void setName(String na) {
+            name = na;
+        }
+        @Override
+        protected Parent clone() {
+            Parent clone = null;
+            try {
+                clone = (Parent) super.clone();
+            } catch (CloneNotSupportedException e){
+                throw new RuntimeException(e); // won't happen
+            }
+
+            return clone;
+         }
+
+        public String toString() {
+            return "Parent[" + name + "===" + age + "];";
+        }
+    }
+}
+
+测试结果：
+[java] view plain copy
+parent1 = Parent[john===10];
+parent2 = Parent[john===10];
+Parent1被复制了一份。
+
+
+public class mytest {
+
+	public static void main(String[] args) {
+        Parent item1 = new Parent("john", 10);
+        Son son1 = new Son("son1",1);
+        item1.setSon(son1);
+        Parent item2 = item1.clone();
+
+        item2.setName("jim");
+        son1.setName("son2");
+
+        System.out.println("parent1 = " + item1.toString());
+        System.out.println("parent2 = " + item2.toString());
+    }
+
+    public static class Parent implements Cloneable{
+        String name = "";
+        int age = 0;
+        Son theson;
+        Parent (String n, int age){
+            this.name = n;
+            this.age = age;
+        }
+
+        public void setName(String na) {
+            name = na;
+        }
+
+        public void setSon(Son s) {
+            theson = s;
+        }
+        @Override
+        protected Parent clone() {
+            Parent clone = null;
+            try {
+                clone = (Parent) super.clone();
+            } catch (CloneNotSupportedException e){
+                throw new RuntimeException(e); // won't happen
+            }
+            clone.theson = theson.clone();
+            return clone;
+         }
+
+        public String toString() {
+            return "Parent[" + name + "===" + age + "];" + "---Son:"+ (theson != null ? theson.name : "null");
+        }
+    }
+    public static class Son implements Cloneable {
+        String name = "";
+        int age = 0;
+        Son (String n, int age){
+            this.name = n;
+            this.age = age;
+        }
+
+        public void setName(String na) {
+            name = na;
+        }
+        @Override
+        protected Son clone() {
+            Son clone = null;
+            try {
+                clone = (Son) super.clone();
+            } catch (CloneNotSupportedException e){
+                throw new RuntimeException(e); // won't happen
+            }
+
+            return clone;
+         }
+
+        public String toString() {
+            return "Son[" + name + "===" + age + "];";
+        }
+    }
+}
+
+如果第89行被注释掉即为浅拷贝，对象没有被拷贝，只拷贝了内存地址，运行结果如下
+parent1 = Parent[john===10];---Son:son2
+parent2 = Parent[jim===10];---Son:son2
+
+不被注释则为深拷贝，运行结果如下
+parent1 = Parent[john===10];---Son:son2
+parent2 = Parent[jim===10];---Son:son1
