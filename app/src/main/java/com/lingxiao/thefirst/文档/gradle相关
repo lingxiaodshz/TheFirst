@@ -1,0 +1,263 @@
+gradle-wrapper.properties 文件
+#Tue Mar 13 08:47:08 CST 2018
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-4.1-all.zip
+
+distributionBase和distributionPath组合在一起，是解压gradle-4.1-all.zip之后的文件的存放位置。
+distributionPath是distributionBase指定的目录下的子目录。
+zipStoreBase和zipStorePath组合在一起，是下载的gradle-4.1-all.zip所存放的位置。
+zipStorePath是zipStoreBase指定的目录下的子目录。
+
+下载位置可以和解压位置不一样。
+zipStoreBase和distributionBase有两种取值：GRADLE_USER_HOME和PROJECT。
+其中，GRADLE_USER_HOME表示用户目录。
+可在setting->gradle下进行配置
+
+distributionUrl是要下载的gradle的地址，使用哪个版本的gradle，就在这里修改。
+gradle的3种版本：
+gradle-xx-all.zip是完整版，包含了各种二进制文件，源代码文件，和离线的文档。例如，https://services.gradle.org/distributions/gradle-3.1-all.zip
+gradle-xx-bin.zip是二进制版，只包含了二进制文件（可执行文件），没有文档和源代码。例如，https://services.gradle.org/distributions/gradle-3.1-bin.zip
+gradle-xx-src.zip是源码版，只包含了Gradle源代码，不能用来编译你的工程。例如，https://services.gradle.org/distributions/gradle-3.1-src.zip
+如果只是为了编译，可以不用完整版，只需要二进制版即可，例如，gradle-3.1-bin.zip。
+
+
+
+settings.gradle文件
+用于初始化以及工程树的配置的，放在根工程目录下。
+设置文件大多数的作用都是为了配置自工程。在Gradle众多工程是通过工程树表示的，相当于我们
+在Android Studio看到的Project和Module概念一样。根工程相当于Android Studio的Project，
+一个根工程可以有很多自工程，也就是很多Module，这样就和Android Studio定义的Module概念对应上了。
+
+include ':app', ':abc', ':abd'  如果你的项目添加了项目依赖，那就会出现在这个文件当中。多个module用逗号分隔开
+
+
+
+build.gradle文件（Project）
+1.buildscript
+buildscript中的声明是gradle脚本自身需要使用的资源。可以声明的资源包括依赖项、
+第三方插件、maven仓库地址等
+
+2.ext
+ext是自定义属性，现在很多人都喜欢把所有关于版本的信息都利用ext放在
+另一个自己新建的gradle文件中集中管理。
+ext{
+    versionName = '1.0.0'
+    versionCode = 1
+}
+使用时如下
+${versionName},${versionCode}  注意$符号不能少
+
+3.repositories
+仓库，jcenter()、maven()和google()是托管第三方插件的平台
+
+4.dependencies
+配置了仓库还不够，还需要在dependencies{}里面的配置里，
+把需要配置的依赖用classpath配置上，这个dependencies
+在buildscript{}里面，所以代表的是Gradle需要的插件。
+
+allprojects
+allprojects块的repositories用于多项目构建，为所有项目提供共同所需依赖包。
+而子项目可以配置自己的repositories以获取自己独需的依赖包。
+
+buildscript和allprojects里面的内容基本上是一样的呢，他们的区别在哪？
+buildscript中的声明是gradle脚本自身需要使用的资源，而allprojects声明的却是你所有module
+所需要使用的资源，如果每个module都需要用同一个第三库的时候，你可以在allprojects里面声明。
+
+task clean
+运行gradle clean时，执行此处定义的task。该任务继承自Delete，删除根目录中的build目录。
+相当于执行Delete.delete(rootProject.buildDir)。其实这个任务的执行就是可以删除生成的
+Build文件的，跟Android Studio的clean是一个道理。
+
+
+build.gradle（Module）
+
+apply plugin：'×××'
+这种叫做引入Gradle插件，而Gradle插件大致分为分为两种：
+1. apply plugin：'×××'：叫做二进制插件，二进制插件一般都是被打包在一个jar里独立发布的，
+比如我们自定义的插件，再发布的时候我们也可以为其指定plugin id，这个plugin id最好是一个全
+限定名称，就像你的包名一样；
+2. apply from：'×××'：叫做应用脚本插件，其实这不能算一个插件，它只是一个脚本。应用脚本
+插件，其实就是把这个脚本加载进来，和二进制插件不同的是它使用的是from关键字.后面紧跟的是一
+个脚本文件，可以是本地的，也可以是网络存在的，如果是网络上的话要使用HTTP URL.
+Gradle插件的作用
+把插件应用到你的项目中，插件会扩展项目的功能，帮助你在项目的构建过程中做很多事情。
+1.可以添加任务到你的项目中，帮你完成一些亊情，比如测试、编译、打包。
+2.可以添加依赖配置到你的项目中，我们可以通过它们配置我们项目在构建过程中需要的依赖.
+比 如我们编译的时候依赖的第三方库等。
+3.可以向项目中现有的对象类型添加新的扩展属性、 方法等，让你可以使用它们帮助我们配置、
+优化构建，比如android{}这个配置块就是Android Gradle插件为Project对象添加的一个扩展。
+4. 可以对项目进行一些约定，比如应用Java插 件之后，约定src/main/java目录下是我们的
+源代码存放位置，在编译的时候也是编译这个目录下的Java源代码文件。
+
+'com.android.application'
+Android Gradle插件的分类其实是根据Android工程的属性分类的。
+在Andriod中有3类工程：
+一类是App应用工程，它可以生成一个可运行的apk应用：
+一类是Library库工程，它可以生成AAR包给其他的App工程公用，就和我们的Jar一样，
+但是它包含了Android的资源等信息，是一个特殊的Jar包；
+最后一类是Test测试工程，用于对App工程或者Library库工程进行单元测试。
+App插件id：com.android.application.
+Library插件id：com.android.library.
+Test插件id：com.android.test.
+
+android{}
+是Android插件提供的一个扩展类型，可以让我们自定义Android Gradle工程，
+是Android Gradle工程配置的唯一入口。
+compileSdkVersion
+是编译所依赖的Android SDK的版本，这里是API Level。
+buildToolsVersion
+是构建该Android工程所用构建工具的版本。
+defaultConfig{}
+defaultConfig是默认的配置，它是一个productFlavors。
+productFlavors就是用于定义产品的特性，这是每个产品不同的地方，
+允许我们根据不同的情况同时生成多个不同的apk包。
+applicationId
+配置我们的包名，包名是app的唯一标识，其实他跟AndroidManifest里面的package是可以不同的，
+他们之间并没有直接的关系。
+package指的是代码目录下路径；applicationId指的是app对外发布的唯一标识，
+会在签名、申请第三方库、发布时候用到。
+minSdkVersion
+是支持的Android系统的api level，这里是15，也就是说低于Android 15版本的机型不能使用这个app。
+targetSdkVersion
+表明我们是基于哪个Android版本开发的，这里是22。
+versionCode
+表明我们的app应用内部版本号，一般用于控制app升级，
+在使用的bugly自动升级能不能接受到升级推送就是基于这个。
+versionName
+表明我们的app应用的版本名称，一般是发布的时候写在app上告诉用户的，
+这样当你修复了一个bug并更新了版本，别人却发现说怎么你这个bug还在，
+你这时候就可以自信的告诉他自己看下app的版本号。
+multiDexEnabled
+用于配置该BuildType是否启用自动拆分多个Dex的功能。一般用程序中代码太多，超过了65535个方法的时候。
+ndk{}
+多平台编译，生成有so包的时候使用，包括四个平台'armeabi', 'x86', 'armeabi-v7a', 'mips'。
+一般使用第三方提供的SDK的时候，可能会附带so库。
+sourceSets
+源代码集合，是Java插件用来描述和管理源代码及资源的一个抽象概念，
+是一个Java源代码文件和资源文件的集合，我们可以通过sourceSets更改源集的Java目录或者资源目录等。
+sourceSets {
+    main {
+        jniLibs.srcDirs = ['libs']
+    }
+}
+如上，通过sourceSets告诉了Gradle关于jni so包的存放路径就在app/libs上了，叫他编译的时候自己去找。
+
+buildType
+构建类型，在Android Gradle工程中，它已经帮我们内置了debug和release两个构建类型，
+两种模式主要车别在于，能否在设备上调试以及签名不一样，其他代码和文件资源都是一样的。
+一般用在代码混淆，而指定的混淆文件在下图的目录上，minifyEnabled=true就会开启混淆：
+proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+其中proguard-android.txt文件放在\sdk\tools\proguard\目录下，是系统默认混淆的文件
+proguard-rules.pro文件是自己配置的文件，可在该文件下配置项目的混淆规则
+
+signingConfigs
+签名配置，一个app只有在签名之后才能被发布、安装、使用，签名是保护app的方式，
+标记该app的唯一性。如果app被恶意删改，签名就不一样了，无法升级安装，一定程度
+保护了我们的app。而signingConfigs就很方便为我们提供这个签名的配置。
+storeFile签名文件，
+storePassword签名证书文件的密码，
+storeType签名证书类型，
+keyAlias签名证书中秘钥别名，
+keyPassword签名证书中改密钥的密码。
+默认情况下，debug模式的签名已经被配置好了，使用的就是Android SDK自动生成的debug证书，
+它一般位于$HOME/.android/debug.keystore,其key和密码是已经知道的，一般情况下我们不需
+要单独配置debug模式的签名信息。
+
+productFlavors
+Gradle的多渠道打包，你以在不同的包定义不同的变量，实现自己的定制化版本的需求。
+
+manifestPlaceholders
+manifestPlaceholders = [APP_NAME:"测试APP"]
+占位符，我们可以通过它动态配置AndroidManifest文件一些内容，譬如app的名字：
+<application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="${APP_NAME}"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+在productFlavors中定义manifestPlaceholders = [APP_NAME: "测试APP"]之后，
+在AndroidManifest的label加上"${APP_NAME}",就能控制每个包打出来的名字
+是我们想要不同的名字，譬如测试服务器和生产服务器的包应该名字不一样。
+
+buildConfigField
+是BuildConfig文件的一个函数，而BuildConfig这个类是Android Gradle构建脚本在编译后生成的。
+而buildConfigField就是其中的自定义函数变量，看下面定义的常量：
+buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"123333\""
+        }
+}
+我们可以在BuildConfig文件中看到我们声明变量
+ // Fields from build type: debug
+  public static final String BASE_URL = "123333";
+然后我们就可以在代码中用这些变量控制不同版本的代码
+
+flavorDimensions
+顾名思义就是维度，Gradle3.0以后要用flavorDimensions的变量必须在defaultConfig{}中
+定义才能使用，不然会报错：
+
+dexOptions{}
+我们知道，Android中的Java源代码被编译成class字节码后，在打包成apk的时候
+被dx命令优化成Android虚拟机可执行的DEX文件。
+DEX文件比较紧凑，Android费尽心思做了这个DEX格式，就是为了能使我们的程序在
+Android中平台上运行快一些。对于这些生成DEX文件的过程和处理，Android Gradle
+插件都帮我们处理好了，Android Gradle插件会调用SDK中的dx命令进行处理。
+但是有的时候可能会遇到提示内存不足的错误，大致提示异常是
+java,lang.OutOfMemoryError: GC overhead limit exceeded,为什么会提示内存不足呢？
+其实这个dx命令只是一个脚本，它调用的还是Java编写的dx.jar库，是Java程序处理的，
+所以当内存不足的时候，我们会看到这个Java异常信息.默认情况下给dx分配的内存是一个G8,
+也就是 1024MB。
+所以我们只需要把内存设置大一点，就可以解决这个问题，下面就把内存设置为2g。
+dexOptions {
+        javaMaxHeapSize "2g"
+}
+
+dependencies{}
+平时用的最多的大概就这个了，
+1. 首先第一句compile fileTree(include: ['.jar'], dir: 'libs')*，
+这样配置之后本地libs文件夹下的扩展名为jar的都会被依赖，非常方便。
+2. 如果你要引入某个本地module的话，那么需要用compile project('×××')。
+3. 如果要引入网上仓库里面的依赖，我们需要这样写
+compile group：'com.squareup.okhttp3',name:'okhttp',version:'3.0.1',
+当然这样是最完整的版本，缩写就把group、name、version去掉，然后以":"分割即可。
+compile 'com.squareup.okhttp3:okhttp:3.0.1'
+但是到了gradle3.0以后build.gradle中的依赖默认为implementation，而不是
+之前的compile。另外，还有依赖指令api。
+gradle 3.0中依赖implementation、api的区别：
+其实api跟以前的compile没什么区别，将compile全部改成api是不会错的；
+而implementation指令依赖是不会传递的，也就是说当前引用的第三方库
+仅限于本module内使用，其他module需要重新添加依赖才能用。
+
+
+name：build type的名字
+applicationIdSuffix：应用id后缀
+versionNameSuffix：版本名称后缀
+debuggable：是否生成一个debug的apk
+minifyEnabled：是否混淆
+proguardFiles：混淆文件
+signingConfig：签名配置
+manifestPlaceholders：清单占位符
+shrinkResources：是否去除未利用的资源，默认false，表示不去除。
+zipAlignEnable：是否使用zipalign工具压缩。
+multiDexEnabled：是否拆成多个Dex
+multiDexKeepFile：指定文本文件编译进主Dex文件中
+multiDexKeepProguard：指定混淆文件编译进主Dex文件中
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
