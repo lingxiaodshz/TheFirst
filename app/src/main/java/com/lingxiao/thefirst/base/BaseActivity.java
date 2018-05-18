@@ -16,7 +16,7 @@ import com.lingxiao.thefirst.R;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
+    protected Toolbar mToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +35,10 @@ public abstract class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
+    }
+
+    public void hideBackButton() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

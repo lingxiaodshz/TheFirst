@@ -73,7 +73,7 @@ public class MapFirstActiviy extends BaseActivity implements View.OnClickListene
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
         setTitle("地图测试一");
-
+        hideBackButton();
 
         //获取地图控件引用
         mMapView = (MapView) findViewById(R.id.map);
