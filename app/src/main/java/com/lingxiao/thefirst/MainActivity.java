@@ -1,22 +1,18 @@
 package com.lingxiao.thefirst;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.support.annotation.Nullable;
 
-import com.lingxiao.thefirst.widget.LastInputEditText;
+import com.lingxiao.thefirst.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-
+    public int getLayoutResource() {
+        return R.layout.activity_main;
     }
 
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
 
+    }
 }
