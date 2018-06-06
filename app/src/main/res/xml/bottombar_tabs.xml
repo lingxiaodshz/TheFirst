@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_recents"
+        icon="@drawable/ic_main_unselected"
+        title="首页" />
+    <tab
+        id="@+id/tab_favorites"
+        icon="@drawable/ic_test_unselected"
+        title="测试" />
+    <tab
+        id="@+id/tab_nearby"
+        icon="@drawable/ic_mine_unselected"
+        title="我的" />
+</tabs>

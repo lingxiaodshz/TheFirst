@@ -11,6 +11,8 @@ import android.view.View;
 
 import com.lingxiao.thefirst.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Administrator on 2018/3/23.
  */
@@ -22,6 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResource());
+        ButterKnife.bind(this);
 
         initToolbar();
         initView(savedInstanceState);
