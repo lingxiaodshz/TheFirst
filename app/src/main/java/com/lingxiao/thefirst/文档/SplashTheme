@@ -1,0 +1,13 @@
+ <style name="AppSplash" parent="android:Theme">
+        启动背景
+        <item name="android:windowBackground">@drawable/app_splash_p</item>
+        去掉启动白色或者黑色闪屏
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+</style>
+
+
+ <item name="android:windowIsTranslucent">true</item>//这里设置了半透明
+ 效果不如
+ <item name="android:windowBackground">@drawable/app_splash_p</item>
+ 这种方式好
