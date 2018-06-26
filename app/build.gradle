@@ -18,9 +18,33 @@ android {
         }
     }
 
-    buildTypes {
+    signingConfigs{
+        debug{
+//            storeFile file("keystore/first.keystore")
+//            storePassword "123456"
+//            keyAlias "first"
+//            keyPassword "123456"
+        }
         release {
+            storeFile file("keystore/first.keystore")
+            storePassword "123456"
+            keyAlias "first"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
             minifyEnabled false
+            zipAlignEnabled true
+            shrinkResources false
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
