@@ -82,9 +82,9 @@ public class MainActivity extends BaseActivity {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);
-            mList.add(new MainFragment());
-            mList.add(new TestFragment());
-            mList.add(new MineFragment());
+            mList.add(MainFragment.newInsatanc());
+            mList.add(TestFragment.newInsatanc());
+            mList.add(MineFragment.newInsatanc());
         }
 
         @Override

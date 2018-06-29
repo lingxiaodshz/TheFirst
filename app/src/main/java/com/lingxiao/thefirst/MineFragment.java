@@ -10,6 +10,11 @@ public class MineFragment extends BaseFragment {
     @BindView(R.id.tv_hint)
     TextView mTvHint;
 
+    public static MineFragment newInsatanc() {
+        MineFragment fragment = new MineFragment();
+        return fragment;
+    }
+
     @Override
     protected int getLayoutResourceID() {
         return R.layout.fragment_main;
