@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
         hideBackButton();
-        setTitle("MainActivity");
+        // setTitle("MainActivity");
 
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -46,7 +46,8 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                setTitle(mTitles[position]);
+                // setTitle(mTitles[position]);
+                setTitleCenter(mTitles[position]);
                 mBottomBar.selectTabAtPosition(position);
             }
 
@@ -74,7 +75,8 @@ public class MainActivity extends BaseActivity {
 
     private void setPage(int position) {
         mViewPager.setCurrentItem(position);
-        setTitle(mTitles[position]);
+        // setTitle(mTitles[position]);
+        setTitleCenter(mTitles[position]);
     }
 
     class MyAdapter extends FragmentPagerAdapter {

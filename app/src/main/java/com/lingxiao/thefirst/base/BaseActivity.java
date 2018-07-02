@@ -3,14 +3,14 @@ package com.lingxiao.thefirst.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.lingxiao.thefirst.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -18,7 +18,10 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+    @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
+    @BindView(R.id.tv_title)
+    AppCompatTextView mTvTitle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +35,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-        mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -62,6 +64,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void setTitle(@StringRes int resId) {
         setTitle(getString(resId));
+    }
+
+    public void setTitleCenter(String title) {
+        if (mTvTitle != null) {
+            mTvTitle.setText(title);
+        }
+    }
+
+    public void setTitleCenter(@StringRes int resId) {
+        setTitleCenter(getString(resId));
     }
 
     public abstract int getLayoutResource();
