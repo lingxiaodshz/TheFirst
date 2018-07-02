@@ -18,8 +18,8 @@ android {
         }
     }
 
-    signingConfigs{
-        debug{
+    signingConfigs {
+        debug {
 //            storeFile file("keystore/first.keystore")
 //            storePassword "123456"
 //            keyAlias "first"

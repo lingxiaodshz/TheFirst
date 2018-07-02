@@ -1,5 +1,6 @@
 package com.lingxiao.thefirst.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
     private Unbinder mUnbinder;
     private View mView;
+    protected Context mContext;
 
     @Nullable
     @Override
@@ -23,8 +25,13 @@ public abstract class BaseFragment extends Fragment {
             throw new RuntimeException("layout ID is null");
         }
         mUnbinder = ButterKnife.bind(this, mView);
+        mContext = getActivity();
+        initFunc();
         initView();
         return mView;
+    }
+
+    protected void initFunc() {
     }
 
     @Override
