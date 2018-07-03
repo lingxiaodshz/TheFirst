@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.lingxiao.thefirst.R;
+import com.lingxiao.thefirst.utils.ToastUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,6 +79,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void setTitleCenter(@StringRes int resId) {
         setTitleCenter(getString(resId));
+    }
+
+    public void showToast(String msg) {
+        ToastUtil.showToast(mContext, msg);
+    }
+
+    public void showToast(@StringRes int resId) {
+        ToastUtil.showToast(mContext, getString(resId));
     }
 
     public abstract int getLayoutResource();

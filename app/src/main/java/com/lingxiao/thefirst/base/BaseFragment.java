@@ -3,10 +3,13 @@ package com.lingxiao.thefirst.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lingxiao.thefirst.utils.ToastUtil;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -38,6 +41,14 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         mUnbinder.unbind();
         super.onDestroy();
+    }
+
+    public void showToast(String msg) {
+        ToastUtil.showToast(mContext, msg);
+    }
+
+    public void showToast(@StringRes int resId) {
+        ToastUtil.showToast(mContext, getString(resId));
     }
 
     protected abstract int getLayoutResourceID();
