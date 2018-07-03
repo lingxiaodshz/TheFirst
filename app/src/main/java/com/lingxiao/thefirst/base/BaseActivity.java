@@ -1,5 +1,6 @@
 package com.lingxiao.thefirst.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -23,11 +24,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @BindView(R.id.tv_title)
     AppCompatTextView mTvTitle;
 
+    protected Context mContext;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResource());
         ButterKnife.bind(this);
+        mContext = this;
 
         initToolbar();
         initView(savedInstanceState);

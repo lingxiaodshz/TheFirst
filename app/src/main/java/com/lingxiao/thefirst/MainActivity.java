@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import com.lingxiao.thefirst.base.BaseActivity;
 import com.lingxiao.thefirst.base.BaseFragment;
@@ -38,6 +39,7 @@ public class MainActivity extends BaseActivity {
         hideBackButton();
         // setTitle("MainActivity");
 
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
