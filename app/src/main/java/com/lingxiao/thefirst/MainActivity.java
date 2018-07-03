@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.lingxiao.thefirst.base.BaseActivity;
@@ -51,6 +53,8 @@ public class MainActivity extends BaseActivity {
                 // setTitle(mTitles[position]);
                 setTitleCenter(mTitles[position]);
                 mBottomBar.selectTabAtPosition(position);
+                //刷新menu
+                invalidateOptionsMenu();
             }
 
             @Override
@@ -79,6 +83,56 @@ public class MainActivity extends BaseActivity {
         mViewPager.setCurrentItem(position);
         // setTitle(mTitles[position]);
         setTitleCenter(mTitles[position]);
+        //刷新menu
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem info = menu.findItem(R.id.info);
+        MenuItem main = menu.findItem(R.id.main);
+        MenuItem setting = menu.findItem(R.id.setting);
+        switch (mViewPager.getCurrentItem()) {
+            case 0:
+                info.setVisible(true);
+                main.setVisible(false);
+                setting.setVisible(false);
+                break;
+            case 1:
+                info.setVisible(false);
+                main.setVisible(false);
+                setting.setVisible(false);
+                break;
+            case 2:
+                info.setVisible(false);
+                main.setVisible(true);
+                setting.setVisible(true);
+                break;
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.info:
+
+                return true;
+            case R.id.main:
+
+                return true;
+            case R.id.setting:
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     class MyAdapter extends FragmentPagerAdapter {

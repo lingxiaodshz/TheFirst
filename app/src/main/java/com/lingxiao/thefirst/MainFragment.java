@@ -30,24 +30,24 @@ public class MainFragment extends BaseFragment {
         mTvHint.setText(getClass().getSimpleName());
     }
 
-    @Override
-    protected void initFunc() {
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_fragment_main, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.info:
-                startActivity(new Intent(mContext, InfoActivity.class));
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    protected void initFunc() {
+//        setHasOptionsMenu(true);
+//    }
+//
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.menu_fragment_main, menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.info:
+//                startActivity(new Intent(mContext, InfoActivity.class));
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

@@ -26,30 +26,30 @@ public class MineFragment extends BaseFragment {
         return R.layout.fragment_main;
     }
 
-    @Override
-    protected void initFunc() {
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_fragment_mine, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.setting:
-                Toast.makeText(mContext, "setting", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.main:
-                Toast.makeText(mContext, "setting", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    protected void initFunc() {
+//        setHasOptionsMenu(true);
+//    }
+//
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.menu_fragment_mine, menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.setting:
+//                Toast.makeText(mContext, "setting", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.main:
+//                Toast.makeText(mContext, "setting", Toast.LENGTH_SHORT).show();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     @Override
     protected void initView() {
