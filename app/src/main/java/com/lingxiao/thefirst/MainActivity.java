@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity {
         setTitleCenter(mTitles[position]);
         //刷新menu
         invalidateOptionsMenu();
-        showToast(mTitles[position]);
+//        showToast(mTitles[position]);
     }
 
     @Override
