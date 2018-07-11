@@ -1,5 +1,6 @@
 package com.lingxiao.thefirst;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lingxiao.thefirst.base.BaseFragment;
+import com.lingxiao.thefirst.utils.PackageUtil;
 
 import java.util.List;
 
@@ -41,11 +43,7 @@ public class TestFragment extends BaseFragment {
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 4));
 
-        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> resolveInfos = mContext.getPackageManager()
-                .queryIntentActivities(mainIntent, PackageManager.COMPONENT_ENABLED_STATE_DEFAULT);
-        AppAdapter adapter = new AppAdapter(mContext, resolveInfos);
+        AppAdapter adapter = new AppAdapter(mContext, PackageUtil.getResolveInfos(mContext));
         mRecyclerView.setAdapter(adapter);
 
     }
@@ -54,12 +52,10 @@ public class TestFragment extends BaseFragment {
 
         private List<ResolveInfo> mResolveInfos;
         private Context mContext;
-        private PackageManager mPackageManager;
 
         public AppAdapter(Context context, List<ResolveInfo> resolveInfos) {
             this.mContext = context;
             this.mResolveInfos = resolveInfos;
-            mPackageManager = mContext.getPackageManager();
         }
 
         @Override
@@ -70,10 +66,18 @@ public class TestFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(AppHolder holder, int position) {
-            ResolveInfo resolveInfo = mResolveInfos.get(position);
+            final ResolveInfo resolveInfo = mResolveInfos.get(position);
 
-            holder.mIvIcon.setImageDrawable(resolveInfo.loadIcon(mPackageManager));
-            holder.mTvName.setText(resolveInfo.loadLabel(mPackageManager));
+            holder.mIvIcon.setImageDrawable(PackageUtil.getAppIcon(mContext, resolveInfo));
+            holder.mTvName.setText(PackageUtil.getAppName(mContext, resolveInfo));
+
+            //打开app
+            holder.mIvIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PackageUtil.startActivity(mContext, resolveInfo);
+                }
+            });
 
         }
 
