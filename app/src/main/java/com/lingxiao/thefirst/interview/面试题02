@@ -62,9 +62,27 @@ sp和dp很类似但唯一的区别是，Android系统允许用户自定义文字
 注意点：
 如果一个View从window中被移除了，那么其内层View（如果有）也会被一起移除，都会回调该方法，且会先回调内层View的onDetachedFromWindow()方法。
     5. void onWindowFocusChanged(boolean hasWindowFocus)；
-当View所在的Window获得或失去焦点时被回调此方法。除了常见的设置view的onGlobalLayoutListener，也可以通过这个方法取到VIew的宽高和位置；也适合在判断当失去焦点时停止一些工作，如图片轮播，动画执行等，当获取到焦点后继续执行。
+当View所在的Window获得或失去焦点时被回调此方法。除了常见的设置view的onGlobalLayoutListener，也可以通过这个方法取到VIew的宽高和位置；
+也适合在判断当失去焦点时停止一些工作，如图片轮播，动画执行等，当获取到焦点后继续执行。
 hasWindowFocus：View所在Window是否获取到焦点,当该Window获得焦点时，hasWindowFocus等于true，否则等于false。
     6. boolean onTouchEvent(MotionEvent event)；
 当手指触摸View的时候回调该方法，前提是触摸事件没有被拦截或者被子View消费掉。该方法是事件分发流程中最后的消费者。
 event：触摸事件对象，包含了该事件的所有信息，如触摸的类型（down、move、up），触摸位置等。
 返回值:true：事件被消费了，false：没有被消费，事件传递到外层View，super方法：同false。
+
+
+3. Android UI卡顿原因及解决办法
+要达到60fps，Android每个16ms就会绘制一次Activity，通过上述的结论我们知道，
+如果由于一些原因导致了我们的逻辑、CPU耗时、GPU耗时大于16ms，UI就无法完成一次绘制，
+那么就会造成卡顿。简单的一句话就是：卡主线程了。
+常见的UI卡顿原因：
+内存抖动的问题
+方法太耗时了（CPU占用）
+解决方法：
+我们利用工具：Hierarchy Viewer进行检测，优化思想是：查看自己的布局，层次是否很深以及渲染比较耗时，
+然后想办法能否减少层级以及优化每一个View的渲染时间。
+尽量避免过度绘制（overdraw）
+
+
+4. Android存储类型
+SharedPreference、File、网络、SQlite、contentProvider
