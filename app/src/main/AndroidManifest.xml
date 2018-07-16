@@ -222,6 +222,10 @@
         <activity
             android:name=".test.InfoActivity"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.okhttp.OkHttpTestActivity"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>

@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
+    @Nullable
     @BindView(R.id.tv_title)
     AppCompatTextView mTvTitle;
 
@@ -36,6 +37,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initToolbar();
         initView(savedInstanceState);
+
+        handleData();
 
     }
 
@@ -92,4 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract int getLayoutResource();
 
     public abstract void initView(@Nullable Bundle savedInstanceState);
+
+    protected void handleData() {
+    }
 }
