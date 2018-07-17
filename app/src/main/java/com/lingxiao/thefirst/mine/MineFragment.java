@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
+import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,11 +67,20 @@ public class MineFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
 
-        ClazzBean bean = new ClazzBean();
-        bean.desc = "OKHttpTest";
-        bean.clazz = OkHttpTestActivity.class;
-        mList.add(bean);
+        initData();
         mRecyclerView.setAdapter(new ClazzAdapter(mContext, mList));
+    }
+
+    private void initData() {
+        ClazzBean bean01 = new ClazzBean();
+        bean01.desc = "OKHttpTest";
+        bean01.clazz = OkHttpTestActivity.class;
+        mList.add(bean01);
+
+        ClazzBean bean02 = new ClazzBean();
+        bean02.desc = "RetrofitTest";
+        bean02.clazz = RetrofitTestActivity.class;
+        mList.add(bean02);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
