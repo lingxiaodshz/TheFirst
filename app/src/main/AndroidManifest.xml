@@ -230,6 +230,10 @@
         <activity
             android:name=".mine.retrofit.RetrofitTestActivity"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".constraint.ConstraintLayoutActivity"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>

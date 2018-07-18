@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
+import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 
@@ -81,6 +82,11 @@ public class MineFragment extends BaseFragment {
         bean02.desc = "RetrofitTest";
         bean02.clazz = RetrofitTestActivity.class;
         mList.add(bean02);
+
+        ClazzBean bean03 = new ClazzBean();
+        bean03.desc = "ConstraintLayout";
+        bean03.clazz = ConstraintLayoutActivity.class;
+        mList.add(bean03);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
