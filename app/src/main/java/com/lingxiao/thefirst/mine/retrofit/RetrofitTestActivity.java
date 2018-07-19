@@ -41,6 +41,7 @@ public class RetrofitTestActivity extends BaseActivity {
 
         Call<WeatherBean> call = service.getWeatherInfo();
 
+        //异步请求
         call.enqueue(new Callback<WeatherBean>() {
             @Override
             public void onResponse(Call<WeatherBean> call, Response<WeatherBean> response) {
@@ -53,5 +54,8 @@ public class RetrofitTestActivity extends BaseActivity {
                 showToast("获取天气信息失败");
             }
         });
+
+        // 发送网络请求（同步）
+        // Response<WeatherBean> response = call.execute();
     }
 }

@@ -15,6 +15,7 @@ import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
+import com.lingxiao.thefirst.mine.threadpool.ThreadPoolTestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,11 @@ public class MineFragment extends BaseFragment {
         bean03.desc = "ConstraintLayout";
         bean03.clazz = ConstraintLayoutActivity.class;
         mList.add(bean03);
+
+        ClazzBean bean04 = new ClazzBean();
+        bean04.desc = "ThreadPool";
+        bean04.clazz = ThreadPoolTestActivity.class;
+        mList.add(bean04);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
