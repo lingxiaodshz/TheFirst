@@ -86,3 +86,20 @@ event：触摸事件对象，包含了该事件的所有信息，如触摸的类
 
 4. Android存储类型
 SharedPreference、File、网络、SQlite、contentProvider
+
+5.Android各种ANR的时间
+Service Timeout
+文件：ActiveServices.java
+    // How long we wait for a service to finish executing.
+    static final int SERVICE_TIMEOUT = 20*1000; // 前台
+    // How long we wait for a service to finish executing.
+    static final int SERVICE_BACKGROUND_TIMEOUT = SERVICE_TIMEOUT * 10; // 后台
+broadcast Timeout
+文件：ActivityManagerService.java
+    // How long we allow a receiver to run before giving up on it.
+    static final int BROADCAST_FG_TIMEOUT = 10*1000;  // 前台
+    static final int BROADCAST_BG_TIMEOUT = 60*1000;  // 后台
+InputDispatching Timeout
+文件：ActivityManagerService.java
+    // How long we wait until we timeout on key dispatching.
+    static final int KEY_DISPATCHING_TIMEOUT = 5*1000;
