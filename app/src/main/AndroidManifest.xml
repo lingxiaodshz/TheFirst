@@ -238,6 +238,10 @@
         <activity
             android:name=".mine.threadpool.ThreadPoolTestActivity"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.merge.MergeActivity"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>

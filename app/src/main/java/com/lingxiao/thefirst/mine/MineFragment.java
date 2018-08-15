@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
+import com.lingxiao.thefirst.mine.merge.MergeActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 import com.lingxiao.thefirst.mine.threadpool.ThreadPoolTestActivity;
@@ -93,6 +94,11 @@ public class MineFragment extends BaseFragment {
         bean04.desc = "ThreadPool";
         bean04.clazz = ThreadPoolTestActivity.class;
         mList.add(bean04);
+
+        ClazzBean bean05 = new ClazzBean();
+        bean05.desc = "Merge";
+        bean05.clazz = MergeActivity.class;
+        mList.add(bean05);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
