@@ -242,6 +242,10 @@
         <activity
             android:name=".mine.merge.MergeActivity"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.viewstub.ViewStubActivity"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>

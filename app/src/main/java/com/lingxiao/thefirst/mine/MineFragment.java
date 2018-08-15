@@ -17,6 +17,7 @@ import com.lingxiao.thefirst.mine.merge.MergeActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 import com.lingxiao.thefirst.mine.threadpool.ThreadPoolTestActivity;
+import com.lingxiao.thefirst.mine.viewstub.ViewStubActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +100,11 @@ public class MineFragment extends BaseFragment {
         bean05.desc = "Merge";
         bean05.clazz = MergeActivity.class;
         mList.add(bean05);
+
+        ClazzBean bean06 = new ClazzBean();
+        bean06.desc = "ViewStub";
+        bean06.clazz = ViewStubActivity.class;
+        mList.add(bean06);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
