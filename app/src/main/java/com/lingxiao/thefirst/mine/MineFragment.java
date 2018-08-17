@@ -14,6 +14,7 @@ import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.merge.MergeActivity;
+import com.lingxiao.thefirst.mine.nestedscroll.NestedScrollActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 import com.lingxiao.thefirst.mine.threadpool.ThreadPoolTestActivity;
@@ -105,6 +106,11 @@ public class MineFragment extends BaseFragment {
         bean06.desc = "ViewStub";
         bean06.clazz = ViewStubActivity.class;
         mList.add(bean06);
+
+        ClazzBean bean08 = new ClazzBean();
+        bean08.desc = "NestedScroll";
+        bean08.clazz = NestedScrollActivity.class;
+        mList.add(bean08);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
