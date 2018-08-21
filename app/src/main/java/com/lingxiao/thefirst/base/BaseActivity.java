@@ -1,6 +1,8 @@
 package com.lingxiao.thefirst.base;
 
 import android.content.Context;
+import android.media.AudioManager;
+import android.net.rtp.AudioStream;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -34,6 +36,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutResource());
         ButterKnife.bind(this);
         mContext = this;
+        // 按音量键会调整不同的音量，STREAM_RING:调整铃声  STREAM_SYSTEM:调整系统  STREAM_MUSIC:调整媒体
+        setVolumeControlStream(AudioManager.STREAM_RING);
 
         initToolbar();
         initData();
