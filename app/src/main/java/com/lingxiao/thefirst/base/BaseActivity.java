@@ -36,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mContext = this;
 
         initToolbar();
+        initData();
         initView(savedInstanceState);
 
         handleData();
@@ -95,6 +96,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract int getLayoutResource();
 
     public abstract void initView(@Nullable Bundle savedInstanceState);
+
+    protected void initData() {
+    }
 
     protected void handleData() {
     }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
+import com.lingxiao.thefirst.mine.animation.AnimationActivity;
 import com.lingxiao.thefirst.mine.merge.MergeActivity;
 import com.lingxiao.thefirst.mine.nestedscroll.NestedScrollActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
@@ -111,6 +112,11 @@ public class MineFragment extends BaseFragment {
         bean08.desc = "NestedScroll";
         bean08.clazz = NestedScrollActivity.class;
         mList.add(bean08);
+
+        ClazzBean bean09 = new ClazzBean();
+        bean09.desc = "Animation";
+        bean09.clazz = AnimationActivity.class;
+        mList.add(bean09);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {

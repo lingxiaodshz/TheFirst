@@ -236,6 +236,10 @@
         <activity
             android:name=".mine.nestedscroll.NestedScrollActivity"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.animation.AnimationActivity"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>
