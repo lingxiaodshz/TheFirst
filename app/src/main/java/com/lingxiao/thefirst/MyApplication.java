@@ -3,6 +3,7 @@ package com.lingxiao.thefirst;
 import android.app.Application;
 
 import com.lingxiao.thefirst.crash.CrashHandler;
+import com.lingxiao.thefirst.utils.DensityUtil;
 
 public class MyApplication extends Application {
 
@@ -17,6 +18,8 @@ public class MyApplication extends Application {
         super.onCreate();
         mInstance = this;
         CrashHandler.getInstance().init();
+
+        DensityUtil.setDensity(this, 360);
 
     }
 
