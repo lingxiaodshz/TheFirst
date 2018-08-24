@@ -19,6 +19,7 @@ public class MyApplication extends Application {
         mInstance = this;
         CrashHandler.getInstance().init();
 
+        //TODO 有待完善
         DensityUtil.setDensity(this, 360);
 
     }

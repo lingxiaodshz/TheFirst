@@ -1,6 +1,7 @@
 package com.lingxiao.thefirst.mine.animation
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,10 @@ class AnimationAdapter(context: Context, list: MutableList<ClazzBean>) : Recycle
 
     override fun onBindViewHolder(holder: AnimationHolder, position: Int) {
         holder.mTvClazz.text = mList[position].desc
+        holder.mTvClazz.setOnClickListener {
+            var intent = Intent(mContext, mList[position].clazz)
+            mContext.startActivity(intent)
+        }
     }
 
     class AnimationHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
