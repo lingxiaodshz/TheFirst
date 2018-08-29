@@ -28,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @BindView(R.id.tv_title)
     AppCompatTextView mTvTitle;
 
+    protected String TAG = getClass().getSimpleName();
     protected Context mContext;
 
     @Override

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -75,6 +76,22 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+
+        // 此处会在onresume执行完成之后才会执行，也就说不会在此阻塞，
+        // 另外runnable内部可以修改view,表明是在主线程中执行的
+        mBottomBar.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "postdelay");
+//                setTitleCenter("postdelay");
+            }
+        }, 1000);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "resume");
     }
 
     private void setPage(int position) {
