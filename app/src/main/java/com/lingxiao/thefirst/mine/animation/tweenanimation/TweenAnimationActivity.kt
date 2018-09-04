@@ -49,6 +49,48 @@ class TweenAnimationActivity : BaseActivity() {
                 iv_dog.startAnimation(getAnimationSet())
             }
         })
+
+        tv_alpha1.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                iv_dog.clearAnimation()
+                iv_dog.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.tween_alpha))
+            }
+        })
+
+        tv_scale1.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                iv_dog.clearAnimation()
+                iv_dog.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.tween_scale))
+            }
+        })
+
+        tv_rotate1.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                iv_dog.clearAnimation()
+                iv_dog.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.tween_rotate))
+            }
+        })
+
+        tv_translation1.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                iv_dog.clearAnimation()
+                iv_dog.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.tween_translate))
+            }
+        })
+
+        tv_set1.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                iv_dog.clearAnimation()
+                var set = AnimationSet(true)
+                set.interpolator = AccelerateInterpolator()
+                set.addAnimation(AnimationUtils.loadAnimation(mContext, R.anim.tween_alpha))
+                set.addAnimation(AnimationUtils.loadAnimation(mContext, R.anim.tween_scale))
+                set.addAnimation(AnimationUtils.loadAnimation(mContext, R.anim.tween_rotate))
+                set.addAnimation(AnimationUtils.loadAnimation(mContext, R.anim.tween_translate))
+
+                iv_dog.startAnimation(set)
+            }
+        })
     }
 
     fun getAlphaAnimation(): AlphaAnimation {
