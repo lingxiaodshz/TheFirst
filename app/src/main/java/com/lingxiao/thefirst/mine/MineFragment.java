@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
+import com.lingxiao.thefirst.mine.fileprovider.FileProviderActivity;
 import com.lingxiao.thefirst.mine.animation.AnimationActivity;
 import com.lingxiao.thefirst.mine.fingerprint.FingerprintActivity;
 import com.lingxiao.thefirst.mine.merge.MergeActivity;
@@ -108,6 +109,11 @@ public class MineFragment extends BaseFragment {
         bean06.desc = "ViewStub";
         bean06.clazz = ViewStubActivity.class;
         mList.add(bean06);
+
+        ClazzBean bean07 = new ClazzBean();
+        bean07.desc = "FileProvider";
+        bean07.clazz = FileProviderActivity.class;
+        mList.add(bean07);
 
         ClazzBean bean08 = new ClazzBean();
         bean08.desc = "NestedScroll";

@@ -2,7 +2,6 @@ package com.lingxiao.thefirst.base;
 
 import android.content.Context;
 import android.media.AudioManager;
-import android.net.rtp.AudioStream;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -52,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
+//            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
     }
 

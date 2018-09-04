@@ -16,7 +16,7 @@
         android:paddingTop="5dp">
 
         <TextView
-            android:id="@+id/bt_alpha"
+            android:id="@+id/tv_alpha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_common_button"
@@ -25,7 +25,7 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/bt_scale"
+            android:id="@+id/tv_scale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -35,7 +35,7 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/bt_rotate"
+            android:id="@+id/tv_rotate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -45,13 +45,23 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/bt_translation"
+            android:id="@+id/tv_translation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:background="@drawable/selector_common_button"
             android:padding="5dp"
             android:text="translation"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/selector_common_button"
+            android:padding="5dp"
+            android:text="set"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

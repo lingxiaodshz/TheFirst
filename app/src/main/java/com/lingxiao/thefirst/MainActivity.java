@@ -37,6 +37,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
+        if (mToolbar != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
         hideBackButton();
         // setTitle("MainActivity");
 
