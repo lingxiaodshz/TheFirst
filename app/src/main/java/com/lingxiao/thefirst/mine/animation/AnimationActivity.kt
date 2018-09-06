@@ -1,14 +1,13 @@
 package com.lingxiao.thefirst.mine.animation
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseActivity
 import com.lingxiao.thefirst.mine.ClazzBean
+import com.lingxiao.thefirst.mine.animation.propertyanimation.PropertyAnimationActivity
 import com.lingxiao.thefirst.mine.animation.tweenanimation.TweenAnimationActivity
-import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity
 import kotlinx.android.synthetic.main.activity_animation.*
 
@@ -37,5 +36,10 @@ class AnimationActivity : BaseActivity() {
         bean02.desc = "RetrofitTest"
         bean02.clazz = RetrofitTestActivity::class.java
         mList.add(bean02)
+
+        val bean03 = ClazzBean()
+        bean03.desc = "PropertyAnimation"
+        bean03.clazz = PropertyAnimationActivity::class.java
+        mList.add(bean03)
     }
 }

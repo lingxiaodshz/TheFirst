@@ -253,6 +253,10 @@
         <activity
             android:name=".mine.animation.tweenanimation.TweenAnimationActivity"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.animation.propertyanimation.PropertyAnimationActivity"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>

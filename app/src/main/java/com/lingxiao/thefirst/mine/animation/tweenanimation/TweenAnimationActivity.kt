@@ -6,6 +6,7 @@ import android.view.animation.*
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_animation_tween.*
+import kotlinx.android.synthetic.main.activity_animation_tween.view.*
 
 class TweenAnimationActivity : BaseActivity() {
     override fun getLayoutResource(): Int {
@@ -98,6 +99,7 @@ class TweenAnimationActivity : BaseActivity() {
         animation.duration = 2000
         animation.repeatCount = 1 //重复次数 注意重复次数不包括第一次的次数
         animation.fillAfter = true //true表示动画结束后状态为结束后的样子，否则恢复原状，默认false
+        animation.fillBefore = false
         animation.repeatMode = Animation.REVERSE
         return animation
     }

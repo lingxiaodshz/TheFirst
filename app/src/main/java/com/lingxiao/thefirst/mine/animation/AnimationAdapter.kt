@@ -3,6 +3,7 @@ package com.lingxiao.thefirst.mine.animation
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -13,7 +14,8 @@ class AnimationAdapter(context: Context, list: MutableList<ClazzBean>) : Recycle
     var mContext = context
     var mList = list
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): AnimationHolder =
-            AnimationHolder(View.inflate(mContext, R.layout.fragment_mine_item, null))
+            AnimationHolder(LayoutInflater.from(mContext)
+                    .inflate(R.layout.activity_animation_item, parent, false))
 
     override fun getItemCount(): Int = mList.size
 
