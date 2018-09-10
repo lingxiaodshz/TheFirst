@@ -257,6 +257,11 @@
         <activity
             android:name=".mine.animation.propertyanimation.PropertyAnimationActivity"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.animation.frameanimation.FrameAnimationActivity"
+            android:label="FrameAnimation"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>
