@@ -1,6 +1,7 @@
 package com.lingxiao.thefirst.mine.fingerprint;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.CancellationSignal;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +64,21 @@ public class FingerprintDialogFragment extends DialogFragment {
                 dismiss();
                 stopListening();
                 getActivity().finish();
+            }
+        });
+
+        // 下面这个对控制dialogFragment消失不起作用
+//        getDialog().setCancelable(false);
+        // 碰触周围禁止消失
+        getDialog().setCanceledOnTouchOutside(false);
+        // 返回键禁止消失
+        getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    return true;
+                }
+                return false;
             }
         });
         return v;
