@@ -22,7 +22,7 @@ class NestedAdapter(context: Context, list: MutableList<String>) : RecyclerView.
         holder.mTvClazz.text = mList[position]+" RecyclerView $position"
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): NestedHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NestedHolder {
         var view = View.inflate(mContext, R.layout.fragment_mine_item, null)
         return NestedHolder(view)
     }

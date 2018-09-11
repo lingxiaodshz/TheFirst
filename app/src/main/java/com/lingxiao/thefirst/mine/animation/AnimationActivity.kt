@@ -8,6 +8,7 @@ import com.lingxiao.thefirst.base.BaseActivity
 import com.lingxiao.thefirst.mine.ClazzBean
 import com.lingxiao.thefirst.mine.animation.frameanimation.FrameAnimationActivity
 import com.lingxiao.thefirst.mine.animation.propertyanimation.PropertyAnimationActivity
+import com.lingxiao.thefirst.mine.animation.rippleeffect.RippleEffectActivity
 import com.lingxiao.thefirst.mine.animation.tweenanimation.TweenAnimationActivity
 import kotlinx.android.synthetic.main.activity_animation.*
 
@@ -41,5 +42,10 @@ class AnimationActivity : BaseActivity() {
         bean03.desc = "PropertyAnimation"
         bean03.clazz = PropertyAnimationActivity::class.java
         mList.add(bean03)
+
+        val bean04 = ClazzBean()
+        bean04.desc = "RippleEffect"
+        bean04.clazz = RippleEffectActivity::class.java
+        mList.add(bean04)
     }
 }

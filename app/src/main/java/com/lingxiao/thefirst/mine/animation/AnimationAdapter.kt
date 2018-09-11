@@ -13,7 +13,7 @@ import com.lingxiao.thefirst.mine.ClazzBean
 class AnimationAdapter(context: Context, list: MutableList<ClazzBean>) : RecyclerView.Adapter<AnimationAdapter.AnimationHolder>() {
     var mContext = context
     var mList = list
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): AnimationHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimationHolder =
             AnimationHolder(LayoutInflater.from(mContext)
                     .inflate(R.layout.activity_animation_item, parent, false))
 
