@@ -16,6 +16,7 @@ import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.fileprovider.FileProviderActivity;
 import com.lingxiao.thefirst.mine.animation.AnimationActivity;
 import com.lingxiao.thefirst.mine.fingerprint.FingerprintActivity;
+import com.lingxiao.thefirst.mine.loadgif.LoadGifActivity;
 import com.lingxiao.thefirst.mine.merge.MergeActivity;
 import com.lingxiao.thefirst.mine.nestedscroll.NestedScrollActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
@@ -129,6 +130,11 @@ public class MineFragment extends BaseFragment {
         bean10.desc = "FingerPrint";
         bean10.clazz = FingerprintActivity.class;
         mList.add(bean10);
+
+        ClazzBean bean11 = new ClazzBean();
+        bean11.desc = "LoadGif";
+        bean11.clazz = LoadGifActivity.class;
+        mList.add(bean11);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
