@@ -267,6 +267,11 @@
             android:name=".mine.animation.rippleeffect.RippleEffectActivity"
             android:label="FrameAnimation"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.animation.revealanimation.RevealAnimationActivity"
+            android:label="FrameAnimation"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>
