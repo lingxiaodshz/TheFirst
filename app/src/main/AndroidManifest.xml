@@ -277,6 +277,11 @@
             android:name=".mine.loadgif.LoadGifActivity"
             android:label="FrameAnimation"
             android:theme="@style/noActionBarTheme" />
+
+        <activity
+            android:name=".mine.notification.NotificationActivity"
+            android:label="FrameAnimation"
+            android:theme="@style/noActionBarTheme" />
     </application>
 
 </manifest>
