@@ -1,4 +1,4 @@
-package com.lingxiao.thefirst.constraint;
+package com.lingxiao.thefirst.mine.constraintlayout;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

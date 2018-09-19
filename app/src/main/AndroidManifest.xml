@@ -219,7 +219,7 @@
             android:theme="@style/noActionBarTheme" />
 
         <activity
-            android:name=".constraint.ConstraintLayoutActivity"
+            android:name=".mine.constraintlayout.ConstraintLayoutActivity"
             android:theme="@style/noActionBarTheme" />
 
         <activity

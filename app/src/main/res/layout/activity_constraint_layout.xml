@@ -12,14 +12,195 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--注意如果需要实现weight=1的效果需要设置宽或者高为0dp-->
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+
+    <TextView
+        android:id="@+id/tv_horizontal_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_common_button"
+        android:padding="10dp"
+        android:text="水平居中"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <!--layout_constraintHorizontal_bias 这个字段是指从左边开始偏移，
+    为0-1，如果设置为0.5则表示居中-->
+    <TextView
+        android:id="@+id/tv_left_bias1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_common_button"
+        android:padding="10dp"
+        android:text="左边偏向40%"
+        android:textColor="@color/white"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_horizontal_center" />
+
+    <TextView
+        android:id="@+id/tv_left_bias2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_common_button"
+        android:padding="10dp"
+        android:text="左边偏向60%"
+        android:textColor="@color/white"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_left_bias1" />
+
+    <TextView
+        android:id="@+id/tv_vertical_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/selector_common_button"
+        android:padding="10dp"
+        android:text="垂直居中"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_all_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_button"
+        android:padding="10dp"
+        android:text="全部居中"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_green_light"
+        android:padding="10dp"
+        android:text="相对偏移"
+        app:layout_constraintLeft_toRightOf="@id/tv_horizontal_center"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <!--app:layout_constraintDimensionRatio="H,7:3"
+    第一个字符H，代表后面的3:2这个比数中分母是指高。-->
+    <TextView
+        android:id="@+id/tv_ratio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:text="自动宽高比"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="H,7:3"
+        app:layout_constraintLeft_toRightOf="@id/tv_all_center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+
+    <TextView
+        android:id="@+id/tv_weigth1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_orange_light"
+        android:padding="10dp"
+        android:text="权重1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_ratio" />
+
+    <TextView
+        android:id="@+id/tv_weigth2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_orange_light"
+        android:padding="10dp"
+        android:text="权重2"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_weigth3"
+        app:layout_constraintTop_toBottomOf="@id/tv_weigth1" />
+
+    <TextView
+        android:id="@+id/tv_weigth3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_orange_light"
+        android:padding="10dp"
+        android:text="权重3"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toRightOf="@id/tv_weigth2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_weigth1" />
+
+    <TextView
+        android:id="@+id/tv_chain1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_red_light"
+        android:padding="10dp"
+        android:text="链1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_chain2"
+        app:layout_constraintTop_toBottomOf="@id/tv_weigth2" />
+
+    <TextView
+        android:id="@+id/tv_chain2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_red_light"
+        android:padding="10dp"
+        android:text="链2"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toRightOf="@id/tv_chain1"
+        app:layout_constraintRight_toLeftOf="@id/tv_chain3"
+        app:layout_constraintTop_toBottomOf="@id/tv_weigth2" />
+
+    <TextView
+        android:id="@+id/tv_chain3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_red_light"
+        android:padding="10dp"
+        android:text="链3"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toRightOf="@id/tv_chain2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_weigth2" />
 
 </android.support.constraint.ConstraintLayout>

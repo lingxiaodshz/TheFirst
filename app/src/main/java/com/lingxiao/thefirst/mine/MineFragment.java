@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
-import com.lingxiao.thefirst.constraint.ConstraintLayoutActivity;
+import com.lingxiao.thefirst.mine.constraintlayout.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.fileprovider.FileProviderActivity;
 import com.lingxiao.thefirst.mine.animation.AnimationActivity;
 import com.lingxiao.thefirst.mine.fingerprint.FingerprintActivity;
