@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseActivity
 import com.lingxiao.thefirst.mine.ClazzBean
+import com.lingxiao.thefirst.mine.animation.constraintanimation.ConstraintAnimationActivity
 import com.lingxiao.thefirst.mine.animation.frameanimation.FrameAnimationActivity
 import com.lingxiao.thefirst.mine.animation.propertyanimation.PropertyAnimationActivity
 import com.lingxiao.thefirst.mine.animation.revealanimation.RevealAnimationActivity
@@ -53,5 +54,10 @@ class AnimationActivity : BaseActivity() {
         bean05.desc = "RevealAnimation"
         bean05.clazz = RevealAnimationActivity::class.java
         mList.add(bean05)
+
+        val bean11 = ClazzBean()
+        bean11.desc = "ConstraintAnimation"
+        bean11.clazz = ConstraintAnimationActivity::class.java
+        mList.add(bean11)
     }
 }
