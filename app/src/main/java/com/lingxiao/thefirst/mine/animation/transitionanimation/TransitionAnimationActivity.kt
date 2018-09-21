@@ -25,6 +25,7 @@ class TransitionAnimationActivity : BaseActivity(), View.OnClickListener {
         }
 
         tv_fade.setOnClickListener(this)
+        tv_explode.setOnClickListener(this)
         tv_slide.setOnClickListener(this)
 
     }
@@ -33,11 +34,13 @@ class TransitionAnimationActivity : BaseActivity(), View.OnClickListener {
         when (v.id) {
             R.id.tv_fade ->
                 startActivity(Intent(mContext, TransitionFadeActivity::class.java),
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(this@TransitionAnimationActivity,null).toBundle())
-            R.id.tv_slide ->
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(this@TransitionAnimationActivity, null).toBundle())
+            R.id.tv_explode ->
+                startActivity(Intent(mContext, TransitionExplodeActivity::class.java),
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(this@TransitionAnimationActivity).toBundle())
+            R.id.tv_slide->
                 startActivity(Intent(mContext, TransitionSlideActivity::class.java),
                         ActivityOptionsCompat.makeSceneTransitionAnimation(this@TransitionAnimationActivity).toBundle())
-
         }
     }
 

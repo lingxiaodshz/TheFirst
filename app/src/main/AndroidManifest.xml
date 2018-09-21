@@ -241,6 +241,8 @@
 
         <activity android:name=".mine.animation.transitionanimation.TransitionFadeActivity" />
 
+        <activity android:name=".mine.animation.transitionanimation.TransitionExplodeActivity" />
+
         <activity android:name=".mine.animation.transitionanimation.TransitionSlideActivity" />
 
         <activity android:name=".mine.animation.constraintanimation.ConstraintAnimationActivity" />
