@@ -34,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResource());
+        initAnimation();
         ButterKnife.bind(this);
         mContext = this;
         // 按音量键会调整不同的音量，STREAM_RING:调整铃声  STREAM_SYSTEM:调整系统  STREAM_MUSIC:调整媒体
@@ -46,6 +47,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         handleData();
 
     }
+
+    protected void initAnimation(){}
 
     private void initToolbar() {
         if (mToolbar != null) {

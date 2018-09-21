@@ -1,13 +1,11 @@
 package com.lingxiao.thefirst.mine.animation.constraintanimation
 
 import android.os.Bundle
-import com.lingxiao.thefirst.R
-import com.lingxiao.thefirst.base.BaseActivity
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.support.transition.TransitionManager
-import android.view.View
-import android.widget.Button
+import com.lingxiao.thefirst.R
+import com.lingxiao.thefirst.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_constraint_animation1.*
 
 

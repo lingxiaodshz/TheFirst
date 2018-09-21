@@ -29,7 +29,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/noActionBarTheme">
 
         <!--
         <activity android:name=".InputActivity">
@@ -43,7 +43,7 @@
         <!--
         <activity
             android:name=".selfdefinedview.view01.Activity01"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,7 +54,7 @@
         <!--
         <activity
             android:name=".selfdefinedview.view02.Activity02"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -65,7 +65,7 @@
         <!--
         <activity
             android:name=".selfdefinedview.view03.Activity03"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -76,7 +76,7 @@
         <!--
         <activity
             android:name=".selfdefinedview.view04.Activity04"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -89,7 +89,7 @@
             android:name=".selfdefinedview.view05.Activity05"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -102,7 +102,7 @@
             android:name=".selfdefinedview.view06.Activity06"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -118,7 +118,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_nested_scrolling"
             android:screenOrientation="portrait"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -131,7 +131,7 @@
             android:name=".map.MapFirstActiviy"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -142,8 +142,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/noActionBarTheme">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -154,7 +153,7 @@
         <!--
         <activity
             android:name=".recyclerview.RecyclerViewActivity"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -165,7 +164,7 @@
         <!--
         <activity
             android:name=".constraint.ConstraintActivity"
-            android:theme="@style/noActionBarTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -206,87 +205,49 @@
             android:name="com.amap.api.v2.apikey"
             android:value="aeb9bd2f0e34d4b58622214445f7158e" />
 
-        <activity
-            android:name=".test.InfoActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".test.InfoActivity" />
 
-        <activity
-            android:name=".mine.okhttp.OkHttpTestActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.okhttp.OkHttpTestActivity" />
 
-        <activity
-            android:name=".mine.retrofit.RetrofitTestActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.retrofit.RetrofitTestActivity" />
 
-        <activity
-            android:name=".mine.constraintlayout.ConstraintLayoutActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.constraintlayout.ConstraintLayoutActivity" />
 
-        <activity
-            android:name=".mine.threadpool.ThreadPoolTestActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.threadpool.ThreadPoolTestActivity" />
 
-        <activity
-            android:name=".mine.merge.MergeActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.merge.MergeActivity" />
 
-        <activity
-            android:name=".mine.viewstub.ViewStubActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.viewstub.ViewStubActivity" />
 
-        <activity
-            android:name=".mine.fileprovider.FileProviderActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.fileprovider.FileProviderActivity" />
 
-        <activity
-            android:name=".mine.nestedscroll.NestedScrollActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.nestedscroll.NestedScrollActivity" />
 
-        <activity
-            android:name=".mine.animation.AnimationActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.AnimationActivity" />
 
-        <activity
-            android:name=".mine.fingerprint.FingerprintActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.fingerprint.FingerprintActivity" />
 
-        <activity
-            android:name=".mine.animation.tweenanimation.TweenAnimationActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.tweenanimation.TweenAnimationActivity" />
 
-        <activity
-            android:name=".mine.animation.propertyanimation.PropertyAnimationActivity"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.propertyanimation.PropertyAnimationActivity" />
 
-        <activity
-            android:name=".mine.animation.frameanimation.FrameAnimationActivity"
-            android:label="FrameAnimation"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.frameanimation.FrameAnimationActivity" />
 
-        <activity
-            android:name=".mine.animation.rippleeffect.RippleEffectActivity"
-            android:label="FrameAnimation"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.rippleeffect.RippleEffectActivity" />
 
-        <activity
-            android:name=".mine.animation.revealanimation.RevealAnimationActivity"
-            android:label="FrameAnimation"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.revealanimation.RevealAnimationActivity" />
 
-        <activity
-            android:name=".mine.animation.constraintanimation.ConstraintAnimationActivity"
-            android:label="FrameAnimation"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.transitionanimation.TransitionAnimationActivity" />
 
-        <activity
-            android:name=".mine.loadgif.LoadGifActivity"
-            android:label="FrameAnimation"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.transitionanimation.TransitionFadeActivity" />
 
-        <activity
-            android:name=".mine.notification.NotificationActivity"
-            android:label="FrameAnimation"
-            android:theme="@style/noActionBarTheme" />
+        <activity android:name=".mine.animation.transitionanimation.TransitionSlideActivity" />
+
+        <activity android:name=".mine.animation.constraintanimation.ConstraintAnimationActivity" />
+
+        <activity android:name=".mine.loadgif.LoadGifActivity" />
+
+        <activity android:name=".mine.notification.NotificationActivity" />
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import com.lingxiao.thefirst.mine.animation.frameanimation.FrameAnimationActivit
 import com.lingxiao.thefirst.mine.animation.propertyanimation.PropertyAnimationActivity
 import com.lingxiao.thefirst.mine.animation.revealanimation.RevealAnimationActivity
 import com.lingxiao.thefirst.mine.animation.rippleeffect.RippleEffectActivity
+import com.lingxiao.thefirst.mine.animation.transitionanimation.TransitionAnimationActivity
 import com.lingxiao.thefirst.mine.animation.tweenanimation.TweenAnimationActivity
 import kotlinx.android.synthetic.main.activity_animation.*
 
@@ -54,6 +55,11 @@ class AnimationActivity : BaseActivity() {
         bean05.desc = "RevealAnimation"
         bean05.clazz = RevealAnimationActivity::class.java
         mList.add(bean05)
+
+        val bean06 = ClazzBean()
+        bean06.desc = "TransitionAnimation"
+        bean06.clazz = TransitionAnimationActivity::class.java
+        mList.add(bean06)
 
         val bean11 = ClazzBean()
         bean11.desc = "ConstraintAnimation"
