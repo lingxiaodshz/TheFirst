@@ -14,15 +14,13 @@ class TransitionFadeActivity : BaseActivity() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        if (BuildConfig.VERSION_CODE >= Build.VERSION_CODES.LOLLIPOP) {
-            setupWindowAnimations()
-        }
-
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun setupWindowAnimations() {
-        var fade = TransitionInflater.from(this).inflateTransition(R.transition.activity_fade)
-        window.exitTransition = fade
+    override fun initAnimation() {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            var fade = TransitionInflater.from(this).inflateTransition(R.transition.activity_fade)
+            window.exitTransition = fade
+        }
     }
 }

@@ -31,5 +31,16 @@
         app:layout_constraintLeft_toRightOf="@id/tv_explode"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
+    <ImageView
+        android:id="@+id/header1"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/ic_dog"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
 
 </android.support.constraint.ConstraintLayout>
