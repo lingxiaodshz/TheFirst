@@ -18,7 +18,6 @@ class TransitionAnimationActivity : BaseActivity(), View.OnClickListener {
         tv_fade.setOnClickListener(this)
         tv_explode.setOnClickListener(this)
         tv_slide.setOnClickListener(this)
-
     }
 
     override fun onClick(v: View) {

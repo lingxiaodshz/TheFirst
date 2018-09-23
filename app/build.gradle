@@ -51,9 +51,9 @@ android {
         }
     }
 
-    dexOptions{
-        javaMaxHeapSize "2g"
-    }
+//    dexOptions{
+//        javaMaxHeapSize "2g"
+//    }
 }
 
 dependencies {

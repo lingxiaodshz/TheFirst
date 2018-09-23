@@ -10,6 +10,6 @@
     app:contentInsetStartWithNavigation="0dp"
     app:navigationIcon="@drawable/ic_back"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:title="@string/app_name"
+    app:titleTextAppearance="@style/toolbar_text_style"
     app:titleTextColor="@android:color/white" />
 

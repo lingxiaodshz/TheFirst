@@ -13,6 +13,7 @@ import com.lingxiao.thefirst.mine.animation.revealanimation.RevealAnimationActiv
 import com.lingxiao.thefirst.mine.animation.rippleeffect.RippleEffectActivity
 import com.lingxiao.thefirst.mine.animation.transitionanimation.TransitionAnimationActivity
 import com.lingxiao.thefirst.mine.animation.tweenanimation.TweenAnimationActivity
+import com.lingxiao.thefirst.mine.animation.viewstateanimatioln.ViewStateAnimationActivity
 import kotlinx.android.synthetic.main.activity_animation.*
 
 class AnimationActivity : BaseActivity() {
@@ -60,6 +61,11 @@ class AnimationActivity : BaseActivity() {
         bean06.desc = "TransitionAnimation"
         bean06.clazz = TransitionAnimationActivity::class.java
         mList.add(bean06)
+
+        val bean07 = ClazzBean()
+        bean07.desc = "ViewStateAnimation"
+        bean07.clazz = ViewStateAnimationActivity::class.java
+        mList.add(bean07)
 
         val bean11 = ClazzBean()
         bean11.desc = "ConstraintAnimation"

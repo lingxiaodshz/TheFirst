@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pressed"
+        android:drawable="@drawable/animaition_view_state5"
+        android:state_pressed="true" />
+    <item
+        android:id="@+id/default1"
+        android:drawable="@drawable/animaition_view_state1" />
+
+    <transition
+        android:fromId="@id/default1"
+        android:toId="@id/pressed">
+
+        <animation-list>
+            <item
+                android:drawable="@drawable/animaition_view_state1"
+                android:duration="300" />
+            <item
+                android:drawable="@drawable/animaition_view_state2"
+                android:duration="300" />
+            <item
+                android:drawable="@drawable/animaition_view_state3"
+                android:duration="300" />
+            <item
+                android:drawable="@drawable/animaition_view_state4"
+                android:duration="300" />
+            <item
+                android:drawable="@drawable/animaition_view_state5"
+                android:duration="300" />
+        </animation-list>
+
+    </transition>
+
+</animated-selector>

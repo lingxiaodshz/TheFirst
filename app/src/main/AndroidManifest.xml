@@ -245,6 +245,10 @@
 
         <activity android:name=".mine.animation.transitionanimation.TransitionSlideActivity" />
 
+        <activity
+            android:name=".mine.animation.viewstateanimatioln.ViewStateAnimationActivity"
+            android:label="ViewStateAnimation" />
+
         <activity android:name=".mine.animation.constraintanimation.ConstraintAnimationActivity" />
 
         <activity android:name=".mine.loadgif.LoadGifActivity" />
