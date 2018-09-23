@@ -249,6 +249,10 @@
             android:name=".mine.animation.viewstateanimatioln.ViewStateAnimationActivity"
             android:label="ViewStateAnimation" />
 
+        <activity
+            android:name=".mine.animation.vectoranimation.VectorAnimationActivity"
+            android:label="VectorAnimation" />
+
         <activity android:name=".mine.animation.constraintanimation.ConstraintAnimationActivity" />
 
         <activity android:name=".mine.loadgif.LoadGifActivity" />
