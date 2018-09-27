@@ -46,7 +46,7 @@ class NotificationActivity : BaseActivity(), View.OnClickListener {
         var builder = NotificationCompat.Builder(this, "common_id")
 //        var builder = NotificationCompat.Builder(this)
         var intent = Intent(this, MainActivity::class.java)
-        var pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+        var pendingIntent = PendingIntent.getActivity(this, 1, intent, 0)
         builder.setContentIntent(pendingIntent)
         builder.setSmallIcon(R.mipmap.ic_launcher)
         builder.setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_dog))
@@ -58,14 +58,17 @@ class NotificationActivity : BaseActivity(), View.OnClickListener {
         var notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         // 注意8.1的版本必须创建通道，8.0的版本三星S9不需要
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            var channel = NotificationChannel("common_id", "common_name", NotificationManager.IMPORTANCE_HIGH)
+            // 注意 importance这个字段NotificationManager.IMPORTANCE_DEFAULT这个代表普通效果，来通知时不会悬挂出现，只会在状态栏显示图标
+            // 如果NotificationManager.IMPORTANCE_HIGH，则会出现悬挂效果，几秒后自动消失
+            var channel = NotificationChannel("common_id", "common_name", NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)
         }
-        notificationManager.notify(10, builder.build())
+        notificationManager.notify(1, builder.build())
     }
 
     private fun showFoldNotification(): Unit {
-        var pendingIntent = PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), 0);
+        var pendingIntent = PendingIntent.getActivity(this, 2,
+                Intent(this, MainActivity::class.java), 0)
 
         var remoteViews = RemoteViews(packageName, R.layout.activity_notification_fold)
 
@@ -83,10 +86,33 @@ class NotificationActivity : BaseActivity(), View.OnClickListener {
             var notificationChannel = NotificationChannel("fold_id", "fold_name", NotificationManager.IMPORTANCE_DEFAULT)
             manager.createNotificationChannel(notificationChannel)
         }
-        manager.notify(1, builder.build())
+        manager.notify(2, builder.build())
     }
 
+    // TODO 悬挂式通知在8.0以下正常显示，显示之后浮在页面上不会消失，在8.0以上效果异常，暂未解决
     private fun showHangNotification(): Unit {
+        var builder = NotificationCompat.Builder(this, "hang_id")
+        var pendingIntent = PendingIntent.getActivity(this, 3,
+                Intent(this, MainActivity::class.java), 0)
+        builder.setContentIntent(pendingIntent)
+        builder.setSmallIcon(R.mipmap.ic_launcher)
+        builder.setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_dog))
+        builder.setAutoCancel(true)
+        builder.setContentTitle("悬挂式通知")
+        builder.setContentText("this is a hang notification~~~~~")
 
+        var hangIntent=Intent()
+        hangIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        hangIntent.setClass(this,MainActivity::class.java)
+        val hangPendingIntent = PendingIntent.getActivity(this, 0, hangIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+        builder.setFullScreenIntent(hangPendingIntent,true)
+
+        var manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            var notificationChannel = NotificationChannel("hang_id", "hang_name", NotificationManager.IMPORTANCE_DEFAULT)
+            manager.createNotificationChannel(notificationChannel)
+        }
+        manager.notify(3, builder.build())
     }
 }
