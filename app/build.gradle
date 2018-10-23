@@ -14,11 +14,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
 
     signingConfigs {
         debug {
@@ -51,9 +46,18 @@ android {
         }
     }
 
-//    dexOptions{
-//        javaMaxHeapSize "2g"
-//    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
+    }
+
 }
 
 dependencies {

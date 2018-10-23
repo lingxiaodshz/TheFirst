@@ -27,6 +27,13 @@ allprojects {
         maven { url 'https://raw.githubusercontent.com/ucarinc/sdk/master/repository' }
         maven { url "https://maven.google.com" }
     }
+
+    // 可以用来显示有哪些方法时过期的
+//    gradle.projectsEvaluated {
+//        tasks.withType(JavaCompile) {
+//            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+//        }
+//    }
 }
 
 task clean(type: Delete) {

@@ -18,6 +18,7 @@ import com.lingxiao.thefirst.mine.animation.AnimationActivity;
 import com.lingxiao.thefirst.mine.fingerprint.FingerprintActivity;
 import com.lingxiao.thefirst.mine.loadgif.LoadGifActivity;
 import com.lingxiao.thefirst.mine.merge.MergeActivity;
+import com.lingxiao.thefirst.mine.ndk.NDKTestActivity;
 import com.lingxiao.thefirst.mine.nestedscroll.NestedScrollActivity;
 import com.lingxiao.thefirst.mine.notification.NotificationActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
@@ -141,6 +142,11 @@ public class MineFragment extends BaseFragment {
         bean12.desc = "Notification";
         bean12.clazz = NotificationActivity.class;
         mList.add(bean12);
+
+        ClazzBean bean13 = new ClazzBean();
+        bean13.desc = "NDK";
+        bean13.clazz = NDKTestActivity.class;
+        mList.add(bean13);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {

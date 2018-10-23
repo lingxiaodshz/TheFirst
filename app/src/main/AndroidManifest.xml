@@ -259,6 +259,8 @@
         <activity android:name=".mine.loadgif.LoadGifActivity" />
 
         <activity android:name=".mine.notification.NotificationActivity" />
+
+        <activity android:name=".mine.ndk.NDKTestActivity" />
     </application>
 
 </manifest>
