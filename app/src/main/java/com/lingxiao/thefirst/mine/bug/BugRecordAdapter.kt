@@ -33,6 +33,6 @@ class BugRecordAdapter(context: Context, list: MutableList<ClazzBean>) : Recycle
 
 
     class BugRecordHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var mTvClazz = itemView.findViewById<TextView>(R.id.tv_text)
+        var mTvClazz = itemView.findViewById<TextView>(R.id.tv_clazz)
     }
 }

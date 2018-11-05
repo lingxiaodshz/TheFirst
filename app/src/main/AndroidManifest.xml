@@ -265,6 +265,10 @@
         <activity
             android:name=".mine.bug.BugRecordActivity"
             android:label="BugRecord" />
+
+        <activity
+            android:name=".mine.bug.textviewhtml.TextViewHtmlActivity"
+            android:label="TextViewHtml" />
     </application>
 
 </manifest>

@@ -131,4 +131,7 @@
 陈王昔时宴平乐，斗酒十千恣欢谑⑿。
 主人何为言少钱⒀，径须沽取对君酌⒁。
 五花马⒂，千金裘，呼儿将出换美酒，与尔同销万古愁⒃。</string>
+
+    <string name="rich_text">"此区域当前用车需求较大,价格临时上调${\"color\":\"dbac6f\",\"content\":\"5.4\"}倍，此单最多上浮 30元"</string>
+    <string name="html_text">"价格临时上调${\"color\":\"dbac6f\",\"content\":\"5.4\"}倍，      此单最多上浮 30元"</string>
 </resources>
