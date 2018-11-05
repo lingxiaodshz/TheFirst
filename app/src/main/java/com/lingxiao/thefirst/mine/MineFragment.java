@@ -12,9 +12,10 @@ import android.widget.TextView;
 
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
+import com.lingxiao.thefirst.mine.animation.AnimationActivity;
+import com.lingxiao.thefirst.mine.bug.BugRecordActivity;
 import com.lingxiao.thefirst.mine.constraintlayout.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.fileprovider.FileProviderActivity;
-import com.lingxiao.thefirst.mine.animation.AnimationActivity;
 import com.lingxiao.thefirst.mine.fingerprint.FingerprintActivity;
 import com.lingxiao.thefirst.mine.loadgif.LoadGifActivity;
 import com.lingxiao.thefirst.mine.merge.MergeActivity;
@@ -147,6 +148,11 @@ public class MineFragment extends BaseFragment {
         bean13.desc = "NDK";
         bean13.clazz = NDKTestActivity.class;
         mList.add(bean13);
+
+        ClazzBean bean14 = new ClazzBean();
+        bean14.desc = "BugRecord";
+        bean14.clazz = BugRecordActivity.class;
+        mList.add(bean14);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
