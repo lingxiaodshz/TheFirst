@@ -3,10 +3,10 @@ package com.lingxiao.thefirst.mine.materialdesign
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import com.lingxiao.thefirst.MainActivity
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseActivity
 import com.lingxiao.thefirst.mine.ClazzBean
+import com.lingxiao.thefirst.mine.materialdesign.snackbar.SnackbarActivity
 import kotlinx.android.synthetic.main.activity_material_design.*
 
 /**
@@ -28,8 +28,8 @@ class MaterialDesignActivity : BaseActivity() {
 
     override fun initData() {
         var bean01 = ClazzBean()
-        bean01.desc = "test"
-        bean01.clazz = MainActivity::class.java
+        bean01.desc = "Snackbar"
+        bean01.clazz = SnackbarActivity::class.java
         mList.add(bean01)
     }
 }
