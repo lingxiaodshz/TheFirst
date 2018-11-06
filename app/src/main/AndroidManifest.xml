@@ -269,6 +269,10 @@
         <activity
             android:name=".mine.bug.textviewhtml.TextViewHtmlActivity"
             android:label="TextViewHtml" />
+
+        <activity
+            android:name=".mine.materialdesign.MaterialDesignActivity"
+            android:label="MaterialDesign" />
     </application>
 
 </manifest>
