@@ -18,7 +18,9 @@ class SnackbarActivity : BaseActivity() {
 
     override fun initView(savedInstanceState: Bundle?) {
         tv_snakebar.setOnClickListener {
-            var snackbar = Snackbar.make(tv_snakebar, "snackbar lala", Snackbar.LENGTH_SHORT)
+            // Snackbar有三种模式LENGTH_SHORT，LENGTH_LONG，LENGTH_INDEFINITE
+            // LENGTH_INDEFINITE代表永久显示
+            var snackbar = Snackbar.make(tv_snakebar, "snackbar lala", Snackbar.LENGTH_INDEFINITE)
             snackbar.view.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimary))
             snackbar.setAction("取消", object : View.OnClickListener {
                 override fun onClick(v: View?) {

@@ -277,6 +277,10 @@
         <activity
             android:name=".mine.materialdesign.snackbar.SnackbarActivity"
             android:label="Snackbar" />
+
+        <activity
+            android:name=".mine.materialdesign.textinputlayout.TextInputLayoutActivity"
+            android:label="TextInputLayout" />
     </application>
 
 </manifest>
