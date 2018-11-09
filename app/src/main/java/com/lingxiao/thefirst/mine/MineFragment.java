@@ -24,6 +24,7 @@ import com.lingxiao.thefirst.mine.ndk.NDKTestActivity;
 import com.lingxiao.thefirst.mine.nestedscroll.NestedScrollActivity;
 import com.lingxiao.thefirst.mine.notification.NotificationActivity;
 import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
+import com.lingxiao.thefirst.mine.parcelable.ParcelableTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 import com.lingxiao.thefirst.mine.threadpool.ThreadPoolTestActivity;
 import com.lingxiao.thefirst.mine.viewstub.ViewStubActivity;
@@ -159,6 +160,11 @@ public class MineFragment extends BaseFragment {
         bean15.desc = "MaterialDesign";
         bean15.clazz = MaterialDesignActivity.class;
         mList.add(bean15);
+
+        ClazzBean bean16 = new ClazzBean();
+        bean16.desc = "ParcelableTest";
+        bean16.clazz = ParcelableTestActivity.class;
+        mList.add(bean16);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {

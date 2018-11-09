@@ -281,6 +281,14 @@
         <activity
             android:name=".mine.materialdesign.textinputlayout.TextInputLayoutActivity"
             android:label="TextInputLayout" />
+
+        <activity
+            android:name=".mine.parcelable.ParcelableTestActivity"
+            android:label="ParcelableTest" />
+
+        <activity
+            android:name=".mine.parcelable.ParcelableReceiveActivity"
+            android:label="ParcelableReceive" />
     </application>
 
 </manifest>
