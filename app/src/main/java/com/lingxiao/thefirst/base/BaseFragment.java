@@ -2,6 +2,7 @@ package com.lingxiao.thefirst.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
@@ -30,8 +31,13 @@ public abstract class BaseFragment extends Fragment {
         mUnbinder = ButterKnife.bind(this, mView);
         mContext = getActivity();
         initFunc();
-        initView();
         return mView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView(mView);
     }
 
     protected void initFunc() {
@@ -53,5 +59,5 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getLayoutResourceID();
 
-    protected abstract void initView();
+    protected abstract void initView(View view);
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.lingxiao.thefirst.base.BaseFragment;
@@ -26,7 +27,7 @@ public class MainFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
         mTvHint.setText(getClass().getSimpleName());
     }
 

@@ -38,14 +38,13 @@ public class TestFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
         mTvHint.setText(getClass().getSimpleName());
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 4));
 
         AppAdapter adapter = new AppAdapter(mContext, PackageUtil.getResolveInfos(mContext));
         mRecyclerView.setAdapter(adapter);
-
     }
 
     static class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppHolder> {

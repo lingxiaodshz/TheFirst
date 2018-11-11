@@ -283,6 +283,10 @@
             android:label="TextInputLayout" />
 
         <activity
+            android:name=".mine.materialdesign.tablayout.TabLayoutActivity"
+            android:label="TabLayout" />
+
+        <activity
             android:name=".mine.parcelable.ParcelableTestActivity"
             android:label="ParcelableTest" />
 

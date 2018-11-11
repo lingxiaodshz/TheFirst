@@ -7,6 +7,7 @@ import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseActivity
 import com.lingxiao.thefirst.mine.ClazzBean
 import com.lingxiao.thefirst.mine.materialdesign.snackbar.SnackbarActivity
+import com.lingxiao.thefirst.mine.materialdesign.tablayout.TabLayoutActivity
 import com.lingxiao.thefirst.mine.materialdesign.textinputlayout.TextInputLayoutActivity
 import kotlinx.android.synthetic.main.activity_material_design.*
 
@@ -37,5 +38,10 @@ class MaterialDesignActivity : BaseActivity() {
         bean02.desc = "TextInputLayout"
         bean02.clazz = TextInputLayoutActivity::class.java
         mList.add(bean02)
+
+        var bean03 = ClazzBean()
+        bean03.desc = "TabLayout"
+        bean03.clazz = TabLayoutActivity::class.java
+        mList.add(bean03)
     }
 }

@@ -77,7 +77,7 @@ public class MineFragment extends BaseFragment {
 //    }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
 
