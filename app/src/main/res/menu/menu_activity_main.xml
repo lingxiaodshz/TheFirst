@@ -16,10 +16,10 @@
         android:visible="false"
         app:showAsAction="never" />
     <item
-        android:id="@+id/main"
+        android:id="@+id/map"
         android:icon="@drawable/ic_menu_main"
         android:orderInCategory="100"
-        android:title="首页"
+        android:title="地图"
         android:visible="false"
         app:showAsAction="never" />
 </menu>

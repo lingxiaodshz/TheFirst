@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lingxiao.thefirst.base.BaseFragment;
+import com.lingxiao.thefirst.map.MapFirstActiviy;
 import com.lingxiao.thefirst.test.InfoActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainFragment extends BaseFragment {
     @BindView(R.id.tv_hint)
@@ -29,6 +31,11 @@ public class MainFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         mTvHint.setText(getClass().getSimpleName());
+    }
+
+    @OnClick(R.id.tv_hint)
+    void onClick(View view) {
+        startActivity(new Intent(mContext, MapFirstActiviy.class));
     }
 
 //    @Override

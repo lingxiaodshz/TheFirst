@@ -1,5 +1,6 @@
 package com.lingxiao.thefirst;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 
 import com.lingxiao.thefirst.base.BaseActivity;
 import com.lingxiao.thefirst.base.BaseFragment;
+import com.lingxiao.thefirst.map.MapFirstActiviy;
 import com.lingxiao.thefirst.mine.MineFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -115,7 +117,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem info = menu.findItem(R.id.info);
-        MenuItem main = menu.findItem(R.id.main);
+        MenuItem main = menu.findItem(R.id.map);
         MenuItem setting = menu.findItem(R.id.setting);
         switch (mViewPager.getCurrentItem()) {
             case 0:
@@ -143,8 +145,8 @@ public class MainActivity extends BaseActivity {
             case R.id.info:
 
                 return true;
-            case R.id.main:
-
+            case R.id.map:
+                startActivity(new Intent(mContext, MapFirstActiviy.class));
                 return true;
             case R.id.setting:
 
