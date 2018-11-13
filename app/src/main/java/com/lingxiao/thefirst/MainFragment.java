@@ -1,15 +1,11 @@
 package com.lingxiao.thefirst;
 
 import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.lingxiao.thefirst.base.BaseFragment;
-import com.lingxiao.thefirst.map.MapFirstActiviy;
-import com.lingxiao.thefirst.test.InfoActivity;
+import com.lingxiao.thefirst.map.MapMarkerActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,7 +31,7 @@ public class MainFragment extends BaseFragment {
 
     @OnClick(R.id.tv_hint)
     void onClick(View view) {
-        startActivity(new Intent(mContext, MapFirstActiviy.class));
+        startActivity(new Intent(mContext, MapMarkerActivity.class));
     }
 
 //    @Override
