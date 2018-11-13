@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lingxiao.thefirst.base.BaseFragment;
+import com.lingxiao.thefirst.map.MapCarTranslationActivity;
 import com.lingxiao.thefirst.map.MapMarkerActivity;
 
 import butterknife.BindView;
@@ -31,7 +32,7 @@ public class MainFragment extends BaseFragment {
 
     @OnClick(R.id.tv_hint)
     void onClick(View view) {
-        startActivity(new Intent(mContext, MapMarkerActivity.class));
+        startActivity(new Intent(mContext, MapCarTranslationActivity.class));
     }
 
 //    @Override

@@ -127,16 +127,6 @@
         </activity>
         -->
         <activity
-            android:name=".map.MapFirstActiviy"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".map.MapMarkerActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:label="MapMarker"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
@@ -147,6 +137,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".map.MapFirstActiviy"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".map.MapMarkerActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="MapMarker"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".map.MapCarTranslationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="MapCarTranslation"
+            android:screenOrientation="portrait" />
 
         <!--
         <activity
