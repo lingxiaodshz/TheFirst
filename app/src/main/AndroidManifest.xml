@@ -161,6 +161,18 @@
             android:label="MapPOI"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".map.MapRouteActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="MapRoute"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".map.MapInputSearchActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="MapInputSearch"
+            android:screenOrientation="portrait" />
+
         <!--
         <activity
             android:name=".recyclerview.RecyclerViewActivity"

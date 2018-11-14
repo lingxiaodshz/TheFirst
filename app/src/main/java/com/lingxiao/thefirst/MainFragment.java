@@ -8,6 +8,7 @@ import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.map.MapCarTranslationActivity;
 import com.lingxiao.thefirst.map.MapMarkerActivity;
 import com.lingxiao.thefirst.map.MapPOIActivity;
+import com.lingxiao.thefirst.map.MapRouteActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,7 +34,7 @@ public class MainFragment extends BaseFragment {
 
     @OnClick(R.id.tv_hint)
     void onClick(View view) {
-        startActivity(new Intent(mContext, MapPOIActivity.class));
+        startActivity(new Intent(mContext, MapRouteActivity.class));
     }
 
 //    @Override
