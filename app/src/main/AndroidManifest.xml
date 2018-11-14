@@ -155,6 +155,12 @@
             android:label="MapCarTranslation"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".map.MapPOIActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="MapPOI"
+            android:screenOrientation="portrait" />
+
         <!--
         <activity
             android:name=".recyclerview.RecyclerViewActivity"
