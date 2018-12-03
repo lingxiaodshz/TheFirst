@@ -126,15 +126,23 @@
             </intent-filter>
         </activity>
         -->
+        <!--exported=false,则复制提示只在本应用中，不能提供给其他app使用-->
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
+            android:label="The First"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PROCESS_TEXT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
 
@@ -315,6 +323,16 @@
         <activity
             android:name=".mine.parcelable.ParcelableReceiveActivity"
             android:label="ParcelableReceive" />
+
+        <!--<activity-->
+            <!--android:name=".mine.customselection.CustomSelectionActivity"-->
+            <!--android:label="ParcelableReceive">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.PROCESS_TEXT" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<data android:mimeType="text/plain" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
     </application>
 
 </manifest>

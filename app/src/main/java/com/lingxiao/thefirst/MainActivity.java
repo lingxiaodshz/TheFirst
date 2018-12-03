@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,6 +92,11 @@ public class MainActivity extends BaseActivity {
 //                setTitleCenter("postdelay");
             }
         });
+
+        CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);
+        if (!TextUtils.isEmpty(text)) {
+            showToast(text.toString());
+        }
     }
 
     @Override
