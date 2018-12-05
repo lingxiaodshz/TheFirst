@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.mine.animation.AnimationActivity;
+import com.lingxiao.thefirst.mine.bottomsheet.BottomSheetActivity;
 import com.lingxiao.thefirst.mine.bug.BugRecordActivity;
 import com.lingxiao.thefirst.mine.constraintlayout.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.fileprovider.FileProviderActivity;
@@ -165,6 +166,11 @@ public class MineFragment extends BaseFragment {
         bean16.desc = "ParcelableTest";
         bean16.clazz = ParcelableTestActivity.class;
         mList.add(bean16);
+
+        ClazzBean bean17 = new ClazzBean();
+        bean17.desc = "BottomSheet";
+        bean17.clazz = BottomSheetActivity.class;
+        mList.add(bean17);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
