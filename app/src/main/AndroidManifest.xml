@@ -324,6 +324,10 @@
             android:name=".mine.parcelable.ParcelableReceiveActivity"
             android:label="ParcelableReceive" />
 
+        <activity
+            android:name=".mine.rxjava.RxJavaActivity"
+            android:label="RxJava" />
+
         <!--<activity-->
             <!--android:name=".mine.customselection.CustomSelectionActivity"-->
             <!--android:label="ParcelableReceive">-->
