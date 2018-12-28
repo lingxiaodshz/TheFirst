@@ -325,6 +325,10 @@
             android:label="ParcelableReceive" />
 
         <activity
+            android:name=".mine.bottomsheet.BottomSheetActivity"
+            android:label="BottomSheet" />
+
+        <activity
             android:name=".mine.rxjava.RxJavaActivity"
             android:label="RxJava" />
 
