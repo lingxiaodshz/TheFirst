@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseActivity
 import com.lingxiao.thefirst.mine.ClazzBean
+import com.lingxiao.thefirst.mine.materialdesign.autoaszeabletextview.AutoSizeableTextViewActivity
 import com.lingxiao.thefirst.mine.materialdesign.snackbar.SnackbarActivity
 import com.lingxiao.thefirst.mine.materialdesign.tablayout.TabLayoutActivity
 import com.lingxiao.thefirst.mine.materialdesign.textinputlayout.TextInputLayoutActivity
@@ -43,5 +44,10 @@ class MaterialDesignActivity : BaseActivity() {
         bean03.desc = "TabLayout"
         bean03.clazz = TabLayoutActivity::class.java
         mList.add(bean03)
+
+        var bean04 = ClazzBean()
+        bean04.desc = "AutoSizeableTextView"
+        bean04.clazz = AutoSizeableTextViewActivity::class.java
+        mList.add(bean04)
     }
 }

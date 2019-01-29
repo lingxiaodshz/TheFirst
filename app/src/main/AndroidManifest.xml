@@ -317,6 +317,10 @@
             android:label="TabLayout" />
 
         <activity
+            android:name=".mine.materialdesign.autoaszeabletextview.AutoSizeableTextViewActivity"
+            android:label="AutoSizeableTextView" />
+
+        <activity
             android:name=".mine.parcelable.ParcelableTestActivity"
             android:label="ParcelableTest" />
 
