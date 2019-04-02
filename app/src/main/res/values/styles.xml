@@ -64,4 +64,10 @@
         <item name="android:textColor">@android:color/holo_red_dark</item>
     </style>
 
+    <style name="TransparentTheme" parent="noActionBarTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

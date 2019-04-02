@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lingxiao.thefirst.R;
+import com.lingxiao.thefirst.base.BaseActivity;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.mine.animation.AnimationActivity;
 import com.lingxiao.thefirst.mine.bottomsheet.BottomSheetActivity;
@@ -28,6 +29,7 @@ import com.lingxiao.thefirst.mine.okhttp.OkHttpTestActivity;
 import com.lingxiao.thefirst.mine.parcelable.ParcelableTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 import com.lingxiao.thefirst.mine.rxjava.RxJavaActivity;
+import com.lingxiao.thefirst.mine.selectcontract.SelectContractActivity;
 import com.lingxiao.thefirst.mine.threadpool.ThreadPoolTestActivity;
 import com.lingxiao.thefirst.mine.viewstub.ViewStubActivity;
 
@@ -177,6 +179,11 @@ public class MineFragment extends BaseFragment {
         bean18.desc = "RxJava";
         bean18.clazz = RxJavaActivity.class;
         mList.add(bean18);
+
+        ClazzBean bean19 = new ClazzBean();
+        bean19.desc = "SelectContract";
+        bean19.clazz = SelectContractActivity.class;
+        mList.add(bean19);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
@@ -203,7 +210,12 @@ public class MineFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, clazzBean.clazz);
-                    mContext.startActivity(intent);
+                    if (clazzBean.clazz == SelectContractActivity.class) {
+                        ((BaseActivity) mContext).startActivityForResult(intent, 100);
+                    } else {
+                        mContext.startActivity(intent);
+                    }
+
                 }
             });
         }
@@ -225,4 +237,15 @@ public class MineFragment extends BaseFragment {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            String name = data.getStringExtra("name");
+            String phone = data.getStringExtra("phone");
+            String countryCode = data.getStringExtra("countryCode");
+            showToast(name + "  " + phone + "  " + countryCode);
+        }
+
+    }
 }

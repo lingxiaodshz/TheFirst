@@ -1,6 +1,7 @@
 package com.lingxiao.thefirst.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lingxiao.thefirst.utils.ToastUtil;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -60,4 +63,5 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutResourceID();
 
     protected abstract void initView(View view);
+
 }

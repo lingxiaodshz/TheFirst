@@ -33,9 +33,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutResource());
-        initAnimation();
-        ButterKnife.bind(this);
+        if (getLayoutResource() != 0) {
+            setContentView(getLayoutResource());
+            initAnimation();
+            ButterKnife.bind(this);
+        }
         mContext = this;
         // 按音量键会调整不同的音量，STREAM_RING:调整铃声  STREAM_SYSTEM:调整系统  STREAM_MUSIC:调整媒体
         setVolumeControlStream(AudioManager.STREAM_RING);

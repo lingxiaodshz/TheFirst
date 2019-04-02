@@ -1,6 +1,7 @@
 package com.lingxiao.thefirst;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,6 +10,8 @@ import com.lingxiao.thefirst.map.MapCarTranslationActivity;
 import com.lingxiao.thefirst.map.MapMarkerActivity;
 import com.lingxiao.thefirst.map.MapPOIActivity;
 import com.lingxiao.thefirst.map.MapRouteActivity;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -57,4 +60,16 @@ public class MainFragment extends BaseFragment {
 //        }
 //        return super.onOptionsItemSelected(item);
 //    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        List<Fragment> frags = getChildFragmentManager().getFragments();
+        if (frags != null) {
+            for (Fragment f : frags) {
+                if (f != null)
+                    f.onActivityResult(requestCode,resultCode,data);
+            }
+        }
+    }
 }

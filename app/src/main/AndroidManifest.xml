@@ -336,6 +336,14 @@
             android:name=".mine.rxjava.RxJavaActivity"
             android:label="RxJava" />
 
+        <activity
+            android:name=".mine.selectcontract.SelectContractActivity"
+            android:label="SelectContract" />
+
+        <activity
+            android:name=".mine.selectcontract.MediumActivity"
+            android:label="MediumActivity" />
+
         <!--<activity-->
             <!--android:name=".mine.customselection.CustomSelectionActivity"-->
             <!--android:label="ParcelableReceive">-->
