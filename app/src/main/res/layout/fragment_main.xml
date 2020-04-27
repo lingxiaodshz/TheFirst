@@ -102,6 +102,10 @@
             android:text="测试测试测试" />
     </com.lingxiao.thefirst.widget.FlowLayout>
 
+    <com.lingxiao.thefirst.widget.SaveRestoreView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
