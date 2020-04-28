@@ -22,6 +22,7 @@ public abstract class BaseFragment extends Fragment {
     private Unbinder mUnbinder;
     private View mView;
     protected Context mContext;
+    protected String TAG = getClass().getSimpleName();
 
     @Nullable
     @Override
@@ -41,9 +42,13 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(mView);
+        initContent();
     }
 
     protected void initFunc() {
+    }
+
+    protected void initContent() {
     }
 
     @Override

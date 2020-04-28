@@ -27,8 +27,9 @@ class RxJavaActivity : BaseActivity() {
     }
 
     override fun initData() {
-        mBeans.add(FragmentBean("First", RxJavaFragment()))
-        mBeans.add(FragmentBean("Second", RxJavaFragment()))
+        mBeans.add(FragmentBean("基本应用", RxJavaFragment1()))
+        mBeans.add(FragmentBean("Action", RxJavaFragment2()))
+        mBeans.add(FragmentBean("操作符", RxJavaFragment3()))
     }
 
 

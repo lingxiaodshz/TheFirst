@@ -20,7 +20,9 @@ import com.lingxiao.thefirst.mine.MineFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,6 +47,8 @@ public class MainActivity extends BaseActivity {
         }
         hideBackButton();
         // setTitle("MainActivity");
+
+        showToast(new SimpleDateFormat().format(new Date()));
 
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
