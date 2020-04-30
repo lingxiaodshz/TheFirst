@@ -1,7 +1,11 @@
 package com.lingxiao.thefirst;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +16,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import com.example.luckw.myapplication.IMyAidlInterface;
 import com.lingxiao.thefirst.base.BaseActivity;
 import com.lingxiao.thefirst.base.BaseFragment;
 import com.lingxiao.thefirst.map.MapFirstActiviy;
@@ -101,7 +108,68 @@ public class MainActivity extends BaseActivity {
         if (!TextUtils.isEmpty(text)) {
             showToast(text.toString());
         }
+
+        /**
+         * 两个APP之间AIDL通信，在另一个APP下创建一个service,如下，
+         * public class MyService extends Service {
+         *     @Override
+         *     public IBinder onBind(Intent intent) {
+         *         return new MyBinder();
+         *     }
+         *
+         *     class MyBinder extends IMyAidlInterface.Stub {
+         *
+         *         @Override
+         *         public String getName() throws RemoteException {
+         *             Date date = Calendar.getInstance().getTime();
+         *             return "MyService  " + date.getMinutes() + ":" + date.getSeconds();
+         *         }
+         *     }
+         * }
+         *
+         * 然后在AndroidMenifest文件里面配置
+         * <service android:name=".MyService">
+         *             <intent-filter>
+         *                 <action android:name="aidl.test1" />
+         *             </intent-filter>
+         *         </service>
+         * 创建IMyAidlInterface.aidl文件和当前app的包名相同，文件也相同
+         * 另一个APP为Server端，则
+         * Intent intent = new Intent("aidl.test1"); 使用server端的service的action
+         * intent.setPackage("com.example.luckw.myapplication"); 使用server端的aidl文件包名
+         *
+         * 客户端代码如下：
+         */
+        Intent intent = new Intent("aidl.test1");
+        intent.setPackage("com.example.luckw.myapplication");
+        bindService(intent, new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        }, BIND_AUTO_CREATE);
+
+        findViewById(R.id.tv_title).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try
+                {
+                    Toast.makeText(MainActivity.this, iMyAidlInterface.getName(), Toast.LENGTH_SHORT).show();
+                }
+                catch (RemoteException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
+
+    private IMyAidlInterface iMyAidlInterface;
 
     @Override
     protected void onResume() {
