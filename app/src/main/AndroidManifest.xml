@@ -341,6 +341,10 @@
             android:label="SelectContract" />
 
         <activity
+            android:name=".mine.service.ServiceModeActivity"
+            android:label="ServiceMode" />
+
+        <activity
             android:name=".mine.selectcontract.MediumActivity"
             android:label="MediumActivity" />
 
@@ -353,6 +357,11 @@
                 <!--<data android:mimeType="text/plain" />-->
             <!--</intent-filter>-->
         <!--</activity>-->
+
+        <service android:name=".mine.service.StartService" />
+
+        <service android:name=".mine.service.BindService" />
+
     </application>
 
 </manifest>

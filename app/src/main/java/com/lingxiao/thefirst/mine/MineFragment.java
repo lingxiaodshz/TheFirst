@@ -1,5 +1,6 @@
 package com.lingxiao.thefirst.mine;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
@@ -30,6 +31,7 @@ import com.lingxiao.thefirst.mine.parcelable.ParcelableTestActivity;
 import com.lingxiao.thefirst.mine.retrofit.RetrofitTestActivity;
 import com.lingxiao.thefirst.mine.rxjava.RxJavaActivity;
 import com.lingxiao.thefirst.mine.selectcontract.SelectContractActivity;
+import com.lingxiao.thefirst.mine.service.ServiceModeActivity;
 import com.lingxiao.thefirst.mine.threadpool.ThreadPoolTestActivity;
 import com.lingxiao.thefirst.mine.viewstub.ViewStubActivity;
 
@@ -184,6 +186,11 @@ public class MineFragment extends BaseFragment {
         bean19.desc = "SelectContract";
         bean19.clazz = SelectContractActivity.class;
         mList.add(bean19);
+
+        ClazzBean bean20 = new ClazzBean();
+        bean20.desc = "Service";
+        bean20.clazz = ServiceModeActivity.class;
+        mList.add(bean20);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {
