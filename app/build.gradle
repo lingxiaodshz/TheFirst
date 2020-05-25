@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -13,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -70,7 +73,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.roughike:bottom-bar:2.3.1'
     implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //注意因为涉及kotlin代码需要使用kapt不能使用annotationProcessor
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
@@ -81,10 +85,22 @@ dependencies {
     //TODO 删除下面的3.7版本，使用上面的4.8.0版本，此处主要是为了源码分析
 //    api 'com.github.bumptech.glide:glide:3.7.0'
 
-    implementation 'io.reactivex:rxjava:1.2.0'
-    implementation 'io.reactivex:rxandroid:1.2.1'
+//    implementation 'io.reactivex:rxjava:1.2.0'
+//    implementation 'io.reactivex:rxandroid:1.2.1'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
     api 'com.google.android:flexbox:1.0.0'
+
+    def room_version = "1.1.1"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    // use kapt for Kotlin
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    implementation "android.arch.persistence.room:rxjava2:$room_version"
+    implementation "android.arch.persistence.room:guava:$room_version"
+    kapt 'android.arch.persistence.room:compiler:1.1.1'
+
 }
 repositories {
     mavenCentral()

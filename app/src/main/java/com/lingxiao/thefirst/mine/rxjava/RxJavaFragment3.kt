@@ -1,14 +1,8 @@
 package com.lingxiao.thefirst.mine.rxjava
 
-import android.util.Log
 import android.view.View
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseFragment
-import rx.Observable
-import rx.functions.Action1
-import rx.functions.Func1
-import rx.functions.Func2
-import rx.schedulers.Schedulers
 
 /**
  * Created by Administrator on 2018/12/28.
@@ -22,7 +16,7 @@ class RxJavaFragment3 : BaseFragment() {
     }
 
     override fun getLayoutResourceID(): Int {
-        return R.layout.fragment_tab_layout
+        return R.layout.fragment_tab_layout3
     }
 
     override fun initView(view: View?) {

@@ -68,7 +68,7 @@ public class MapRouteActivity extends BaseActivity implements RouteSearch.OnRout
     }
 
     @OnClick({R.id.tv_start_address, R.id.tv_end_address, R.id.tv_search})
-    void onClick(View view) {
+    void onClick1(View view) {
         switch (view.getId()) {
             case R.id.tv_start_address:
                 Intent startIntent = new Intent(mContext, MapInputSearchActivity.class);

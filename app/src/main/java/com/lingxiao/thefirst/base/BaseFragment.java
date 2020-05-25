@@ -18,7 +18,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener {
     private Unbinder mUnbinder;
     private View mView;
     protected Context mContext;
@@ -43,6 +43,11 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initView(mView);
         initContent();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     protected void initFunc() {

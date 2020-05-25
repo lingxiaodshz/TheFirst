@@ -341,8 +341,12 @@
             android:label="SelectContract" />
 
         <activity
-            android:name=".mine.service.ServiceModeActivity"
-            android:label="ServiceMode" />
+            android:name=".mine.jetpack.JetpackActivity"
+            android:label="Jetpack" />
+
+        <activity
+            android:name=".mine.jetpack.room.JetpackRoomActivity"
+            android:label="JetpackRoom" />
 
         <activity
             android:name=".mine.selectcontract.MediumActivity"
@@ -357,6 +361,10 @@
                 <!--<data android:mimeType="text/plain" />-->
             <!--</intent-filter>-->
         <!--</activity>-->
+
+        <activity
+            android:name=".mine.service.ServiceModeActivity"
+            android:label="ServiceMode" />
 
         <service android:name=".mine.service.StartService" />
 

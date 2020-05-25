@@ -27,7 +27,7 @@ class MyActivity : BaseActivity() {
     }
 
     @OnClick(R.id.tv_test)
-    fun onClick(view: View) {
+    fun onClick1(view: View) {
         when (view.id) {
             R.id.tv_test -> {
                 showToast("我被点击了")

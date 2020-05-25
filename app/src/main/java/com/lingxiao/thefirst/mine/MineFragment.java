@@ -20,6 +20,7 @@ import com.lingxiao.thefirst.mine.bug.BugRecordActivity;
 import com.lingxiao.thefirst.mine.constraintlayout.ConstraintLayoutActivity;
 import com.lingxiao.thefirst.mine.fileprovider.FileProviderActivity;
 import com.lingxiao.thefirst.mine.fingerprint.FingerprintActivity;
+import com.lingxiao.thefirst.mine.jetpack.JetpackActivity;
 import com.lingxiao.thefirst.mine.loadgif.LoadGifActivity;
 import com.lingxiao.thefirst.mine.materialdesign.MaterialDesignActivity;
 import com.lingxiao.thefirst.mine.merge.MergeActivity;
@@ -191,6 +192,11 @@ public class MineFragment extends BaseFragment {
         bean20.desc = "Service";
         bean20.clazz = ServiceModeActivity.class;
         mList.add(bean20);
+
+        ClazzBean bean21 = new ClazzBean();
+        bean21.desc = "Jetpack";
+        bean21.clazz = JetpackActivity.class;
+        mList.add(bean21);
     }
 
     static class ClazzAdapter extends RecyclerView.Adapter<ClazzAdapter.ClazzHolder> {

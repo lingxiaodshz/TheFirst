@@ -138,7 +138,7 @@ public class MapPOIActivity extends BaseActivity implements PoiSearch.OnPoiSearc
      * 采用异步搜索查询
      */
     @OnClick(R.id.tv_search)
-    void onClick(View view) {
+    void onClick1(View view) {
         if (TextUtils.isEmpty(mEtAddress.getText())) {
             showToast("搜索内容为空");
             return;

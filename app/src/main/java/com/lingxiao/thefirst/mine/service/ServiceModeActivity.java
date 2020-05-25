@@ -33,7 +33,7 @@ public class ServiceModeActivity extends BaseActivity {
     }
 
     @OnClick({R.id.tv_bind, R.id.tv_start, R.id.tv_stop_service, R.id.tv_unbind_service})
-    void onClick(View view) {
+    void onClick1(View view) {
         switch (view.getId()) {
             case R.id.tv_start:
                 startService(new Intent(this, StartService.class));

@@ -32,7 +32,7 @@ public class ViewStubActivity extends BaseActivity {
     }
 
     @OnClick(R.id.tv_test)
-    void onClick(View view) {
+    void onClick1(View view) {
         switch (view.getId()) {
             case R.id.tv_test:
                 // 注意：此处ViewStub在没加载的时候是gone状态，家在之后仍然是gone，而不是visible

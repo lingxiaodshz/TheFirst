@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.lingxiao.thefirst.R;
 import com.lingxiao.thefirst.utils.ToastUtil;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2018/3/23.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
     @Nullable
@@ -47,6 +48,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView(savedInstanceState);
 
         handleData();
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 

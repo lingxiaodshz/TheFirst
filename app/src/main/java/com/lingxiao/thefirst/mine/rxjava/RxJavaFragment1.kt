@@ -5,68 +5,110 @@ import android.util.Log
 import android.view.View
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseFragment
-import rx.Observable
-import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
+import io.reactivex.ObservableOnSubscribe
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.fragment_tab_layout1.*
+import org.reactivestreams.Subscriber
+import org.reactivestreams.Subscription
 
 /**
  * Created by Administrator on 2018/12/28.
  */
-class RxJavaFragment1 : BaseFragment() {
+class RxJavaFragment1 : BaseFragment(){
     companion object {
         fun newInstance(): BaseFragment {
             var fragment = RxJavaFragment1()
             return fragment
         }
+
+        var i: Int = 15
     }
 
     override fun getLayoutResourceID(): Int {
-        return R.layout.fragment_tab_layout
+        return R.layout.fragment_tab_layout1
     }
 
     override fun initView(view: View?) {
+        bt_test.setOnClickListener(this)
     }
 
     override fun initContent() {
-        // 观察者
-        var subscriber: Subscriber<String> = object : Subscriber<String>(){
+
+    }
+
+    fun test() {
+        var subscriber:Subscriber<String> = object : Subscriber<String> {
+            override fun onComplete() {
+                TODO("Not yet implemented")
+            }
+
+            override fun onSubscribe(s: Subscription?) {
+                TODO("Not yet implemented")
+            }
+
             override fun onNext(t: String?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onError(t: Throwable?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        var observer: Observer<String> = object : Observer<String> {
+            override fun onNext(t: String) {
                 if (TextUtils.isEmpty(t)) {
                     Log.e(TAG, "onNext")
+                    tv_content.append("onNext")
+                    tv_content.append("\n")
                 } else {
                     Log.e(TAG, t)
+                    tv_content.append(t)
+                    tv_content.append("\n")
                 }
             }
 
-            override fun onCompleted() {
-                Log.e(TAG, "onCompleted")
-            }
-
-            override fun onError(e: Throwable?) {
+            override fun onError(e: Throwable) {
                 Log.e(TAG, "onError")
+                tv_content.append("onError")
+                tv_content.append("\n")
             }
 
-            override fun onStart() {
-                Log.e(TAG, "onStart")
+            override fun onComplete() {
+                Log.e(TAG, "onComplete")
+                tv_content.append("onComplete")
+                tv_content.append("\n")
+            }
+
+            override fun onSubscribe(d: Disposable) {
+                Log.e(TAG, "onSubscribe")
+                tv_content.append("onSubscribe")
+                tv_content.append("\n")
             }
         }
 
-        // 被观察者
-        var observable: Observable<String> = Observable.create(object : Observable.OnSubscribe<String> {
-            override fun call(t: Subscriber<in String>?) {
-                subscriber.onNext("test")
-                subscriber.onNext("test2")
-                subscriber.onCompleted()
+        var observable: Observable<String> = Observable.create(object : ObservableOnSubscribe<String> {
+            override fun subscribe(emitter: ObservableEmitter<String>) {
+                emitter.onNext("test")
+                tv_content.append("test")
+                tv_content.append("\n")
+                emitter.onNext("test2")
+                tv_content.append("test2")
+                tv_content.append("\n")
+                emitter.onComplete()
             }
         })
-        // 被观察者产生事件，观察者接收事件并给出响应动作，被观察者订阅观察者
-        // subscribeOn(): 指定 subscribe() 所发生的线程，即 Observable.OnSubscribe 被激活时所处的线程。或者叫做事件产生的线程。
-        // observeOn(): 指定 Subscriber 所运行在的线程。或者叫做事件消费的线程。
-        observable
-                .subscribeOn(Schedulers.io()) // 指定 subscribe() 发生在 IO 线程
-                .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程
-                .subscribe(subscriber)
 
+        observable.subscribe(observer)
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.bt_test ->
+                test()
+        }
     }
 }

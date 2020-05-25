@@ -1,18 +1,16 @@
 package com.lingxiao.thefirst.mine.rxjava
 
-import android.text.TextUtils
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseFragment
-import rx.Observable
-import rx.Scheduler
-import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.functions.Action
-import rx.functions.Action0
-import rx.functions.Action1
-import rx.schedulers.Schedulers
+import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
+import io.reactivex.ObservableOnSubscribe
+import io.reactivex.functions.Action
+import io.reactivex.functions.Consumer
+import kotlinx.android.synthetic.main.fragment_tab_layout2.*
 
 /**
  * Created by Administrator on 2018/12/28.
@@ -26,38 +24,58 @@ class RxJavaFragment2 : BaseFragment() {
     }
 
     override fun getLayoutResourceID(): Int {
-        return R.layout.fragment_tab_layout
+        return R.layout.fragment_tab_layout2
     }
 
     override fun initView(view: View?) {
+        bt_test.setOnClickListener(this)
     }
 
     override fun initContent() {
-        // 被观察者
-        var observable: Observable<String> = Observable.create(object : Observable.OnSubscribe<String> {
-            override fun call(t: Subscriber<in String>?) {
-                t?.onNext("test")
-                t?.onNext("test2")
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.bt_test ->
+                action()
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun action() {
+        var observable: Observable<String> = Observable.create(object : ObservableOnSubscribe<String> {
+            override fun subscribe(emitter: ObservableEmitter<String>) {
+                tv_content.append("subscribe")
+                tv_content.append("\n")
+
+                emitter.onNext("1")
+
+                //注意 onError和onComplete只能执行一个
+//                emitter.onError(object : Throwable("throwable") {
+//                })
+
+                emitter.onComplete()
             }
         })
 
-        var nextAction: Action1<String> = object : Action1<String> {
-            override fun call(t: String?) {
-                Log.e(TAG, "RxJavaFragment2:: " + t)
+        observable.subscribe(object : Consumer<String> {
+            override fun accept(t: String?) {
+                tv_content.append("accept  ")
+                tv_content.append(t)
+                tv_content.append("\n")
             }
-        }
-        var errorAction:Action1<Throwable> = object : Action1<Throwable> {
-            override fun call(t: Throwable?) {
-
+        }, object : Consumer<Throwable> {
+            override fun accept(t: Throwable?) {
+                tv_content.append("accept  ")
+                tv_content.append(t?.message)
+                tv_content.append("\n")
             }
-        }
-        var completeAction: Action0 = object : Action0 {
-            override fun call() {
-                Log.e(TAG, "RxJavaFragment2:: complete")
+
+        }, object : Action {
+            override fun run() {
+                tv_content.append("run")
+                tv_content.append("\n")
             }
-        }
-
-        observable.subscribe(nextAction, errorAction, completeAction)
-
+        })
     }
 }

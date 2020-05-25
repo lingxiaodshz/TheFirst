@@ -36,7 +36,7 @@ public class MainFragment extends BaseFragment {
     }
 
     @OnClick(R.id.tv_hint)
-    void onClick(View view) {
+    void onClick1(View view) {
         startActivity(new Intent(mContext, MapRouteActivity.class));
     }
 
@@ -67,8 +67,9 @@ public class MainFragment extends BaseFragment {
         List<Fragment> frags = getChildFragmentManager().getFragments();
         if (frags != null) {
             for (Fragment f : frags) {
-                if (f != null)
+                if (f != null) {
                     f.onActivityResult(requestCode,resultCode,data);
+                }
             }
         }
     }
