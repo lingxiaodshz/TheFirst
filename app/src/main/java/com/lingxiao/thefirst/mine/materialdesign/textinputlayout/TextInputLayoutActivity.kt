@@ -21,7 +21,7 @@ class TextInputLayoutActivity : BaseActivity() {
             if (TextUtils.isEmpty(tie_phone.text)) {
                 showError(til_phone, "手机号不能为空")
             } else {
-                if (tie_phone.text.trim().length < 11) {
+                if (tie_phone.text!!.trim().length < 11) {
                     showError(til_phone, "手机号输入有误")
                 } else {
                     til_phone.isErrorEnabled = false
@@ -30,7 +30,7 @@ class TextInputLayoutActivity : BaseActivity() {
             if (TextUtils.isEmpty(tie_password.text)) {
                 showError(til_password, "密码不能为空")
             } else {
-                if (tie_password.text.trim().length < 6) {
+                if (tie_password.text!!.trim().length < 6) {
                     showError(til_password, "密码不能少于6位")
                 } else {
                     til_password.isErrorEnabled = false

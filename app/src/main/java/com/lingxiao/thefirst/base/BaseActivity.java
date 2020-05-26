@@ -11,7 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.lingxiao.thefirst.BuildConfig;
 import com.lingxiao.thefirst.R;
+import com.lingxiao.thefirst.mine.jetpack.lifecycle.TestObserver;
 import com.lingxiao.thefirst.utils.ToastUtil;
 
 import butterknife.BindView;
@@ -34,6 +36,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (BuildConfig.LIFE_CYCLE) {
+            TestObserver observer = new TestObserver(TAG);
+            getLifecycle().addObserver(observer);
+        }
         if (getLayoutResource() != 0) {
             setContentView(getLayoutResource());
             initAnimation();

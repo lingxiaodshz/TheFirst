@@ -3,6 +3,11 @@ package com.lingxiao.thefirst.mine.rxjava
 import android.view.View
 import com.lingxiao.thefirst.R
 import com.lingxiao.thefirst.base.BaseFragment
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import kotlinx.android.synthetic.main.fragment_tab_layout3.*
 
 /**
  * Created by Administrator on 2018/12/28.
@@ -20,6 +25,7 @@ class RxJavaFragment3 : BaseFragment() {
     }
 
     override fun initView(view: View?) {
+        bt_test.setOnClickListener(this)
     }
 
     override fun initContent() {
@@ -237,5 +243,35 @@ class RxJavaFragment3 : BaseFragment() {
 
         //--------------------------------------辅助操作符---------------------------------------------
 
+
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.bt_test -> test()
+        }
+    }
+
+    private fun test() {
+        Observable
+                .range(1, 5)
+                .map{"$it"}
+                .subscribe(object : Observer<String> {
+                    override fun onComplete() {
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+                        tv_content.text = ""
+                    }
+
+                    override fun onNext(t: String) {
+                        tv_content.append(t)
+                        tv_content.append("\n")
+                    }
+
+                    override fun onError(e: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+                });
     }
 }

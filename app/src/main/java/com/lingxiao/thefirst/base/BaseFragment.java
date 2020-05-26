@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lingxiao.thefirst.BuildConfig;
+import com.lingxiao.thefirst.mine.jetpack.lifecycle.TestObserver;
 import com.lingxiao.thefirst.utils.ToastUtil;
 
 import java.util.List;
@@ -23,6 +25,15 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     private View mView;
     protected Context mContext;
     protected String TAG = getClass().getSimpleName();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (BuildConfig.LIFE_CYCLE) {
+            TestObserver observer = new TestObserver(TAG);
+            getLifecycle().addObserver(observer);
+        }
+    }
 
     @Nullable
     @Override
