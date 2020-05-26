@@ -49,48 +49,78 @@ class JetpackRoomActivity : BaseActivity() {
         }
     }
 
-    @SuppressLint("CheckResult")
     private fun insert() {
         Observable
-                .create(object : ObservableOnSubscribe<Object> {
-                    override fun subscribe(emitter: ObservableEmitter<Object>) {
+                .create(object : ObservableOnSubscribe<List<User>> {
+                    override fun subscribe(emitter: ObservableEmitter<List<User>>) {
                         // 增加用户
                         var user = User()
                         user.name = "用户A"
                         user.age = 20
                         userDao.insert(user)
-                        emitter.onNext(object : Object() {
-
-                        })
+                        emitter.onNext(userDao.getAllUsers())
                     }
-                })
-                .subscribeOn(Schedulers.io())
-                .subscribe(object : Consumer<Object> {
-                    override fun accept(t: Object?) {
-                        show()
+                }).flatMap(object : Function<List<User>, ObservableSource<User>> {
+                    override fun apply(list: List<User>): ObservableSource<User> {
+                        return Observable.fromIterable(list)
+                    }
+                }).map(object : Function<User, String> {
+                    override fun apply(user: User): String {
+                        return user.toString()
+                    }
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<String> {
+                    override fun onComplete() {
+                    }
+                    override fun onSubscribe(d: Disposable) {
+                        //TODO 注意onSubscribe方法只执行一次
+                        tv_content.text = ""
+                    }
+                    override fun onNext(t: String) {
+                        tv_content.append(t)
+                        tv_content.append("\n")
+                    }
+                    override fun onError(e: Throwable) {
                     }
                 })
     }
 
-    @SuppressLint("CheckResult")
     private fun delete() {
         Observable
                 .create(object : ObservableOnSubscribe<List<User>> {
                     override fun subscribe(emitter: ObservableEmitter<List<User>>) {
                         var users = userDao.getAllUsers()
                         userDao.delete(users[0])
-                        emitter.onNext(users)
+                        emitter.onNext(userDao.getAllUsers())
+                    }
+                })
+                .flatMap(object : Function<List<User>, ObservableSource<User>> {
+                    override fun apply(t: List<User>): ObservableSource<User> {
+                        return Observable.fromIterable(t)
+                    }
+                })
+                .map(object : Function<User, String> {
+                    override fun apply(t: User): String {
+                        return t.toString()
                     }
                 })
                 .subscribeOn(Schedulers.io())
-                .subscribe(object : Consumer<List<User>> {
-                    override fun accept(t: List<User>) {
-                        show()
+                .subscribe(object : Observer<String> {
+                    override fun onComplete() {
+                    }
+                    override fun onSubscribe(d: Disposable) {
+                        tv_content.text = ""
+                    }
+                    override fun onNext(t: String) {
+                        tv_content.append(t)
+                        tv_content.append("\n")
+                    }
+                    override fun onError(e: Throwable) {
                     }
                 })
     }
 
-    @SuppressLint("CheckResult")
     private fun update() {
         Observable
                 .create(object : ObservableOnSubscribe<List<User>> {
@@ -101,30 +131,21 @@ class JetpackRoomActivity : BaseActivity() {
                         userDao.update(users[0])
                         emitter.onNext(users)
                     }
-                }).subscribeOn(Schedulers.io())
-                .subscribe(object : Consumer<List<User>> {
-                    override fun accept(t: List<User>?) {
-                        show()
-                    }
-                })
-    }
-
-    @SuppressLint("CheckResult")
-    private fun show() {
-        tv_content.text = ""
-        Flowable
-                .fromIterable(userDao.getAllUsers())
-                .map(object : Function<User, String> {
-                    override fun apply(t: User): String {
-                        return t.toString()
-                    }
-                })
+                }).flatMap { Observable.fromIterable(it) }
+                .map { it.toString() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Consumer<String> {
-                    override fun accept(t: String?) {
+                .subscribe(object : Observer<String> {
+                    override fun onComplete() {
+                    }
+                    override fun onSubscribe(d: Disposable) {
+                        tv_content.text = ""
+                    }
+                    override fun onNext(t: String) {
                         tv_content.append(t)
                         tv_content.append("\n")
+                    }
+                    override fun onError(e: Throwable) {
                     }
                 })
     }
