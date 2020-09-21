@@ -1,14 +1,14 @@
 package com.lingxiao.thefirst;
 
 import android.content.Intent;
+import android.os.Looper;
+import android.os.MessageQueue;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.lingxiao.thefirst.base.BaseFragment;
-import com.lingxiao.thefirst.map.MapCarTranslationActivity;
-import com.lingxiao.thefirst.map.MapMarkerActivity;
-import com.lingxiao.thefirst.map.MapPOIActivity;
 import com.lingxiao.thefirst.map.MapRouteActivity;
 
 import java.util.List;
@@ -72,5 +72,19 @@ public class MainFragment extends BaseFragment {
                 }
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //handler空闲消息机制的运用，如果返回true会一直被调用，返回false只执行一次，然后从空闲列表移出
+//        Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() {
+//            @Override
+//            public boolean queueIdle() {
+//                Log.i(TAG, "queueIdle: ");
+//                showToast("queueIdle");
+//                return false;
+//            }
+//        });
     }
 }
