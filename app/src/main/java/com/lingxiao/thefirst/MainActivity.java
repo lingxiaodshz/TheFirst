@@ -1,10 +1,15 @@
 package com.lingxiao.thefirst;
 
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -41,6 +46,52 @@ public class MainActivity extends BaseActivity {
     BottomBar mBottomBar;
 
     private String[] mTitles = {"首页", "测试", "我的"};
+    private Handler mHandler = new Handler();
+
+
+    private static final int MSG_FROM_CLIENT = 0x10001;
+    private static final int MSG_TO_CLIENT = 0x10002;
+
+    private static final String IS_LOGIN = "isLogin";
+    private static final String NICK_NAME = "nickName";
+    private static final String USER_ID = "userId";
+
+    private boolean isConn;
+    private Messenger mService;
+    private Messenger mMessenger = new Messenger(new Handler() {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void handleMessage(Message msgFromServer) {
+            switch (msgFromServer.what) {
+                case MSG_TO_CLIENT:
+                    Bundle data = msgFromServer.getData();
+                    showToast("服务器返回内容\n" +
+                            data.get(NICK_NAME) + "\n" +
+                            data.get(USER_ID) + "\n" +
+                            data.get(IS_LOGIN) + "\n");
+                    break;
+            }
+            super.handleMessage(msgFromServer);
+        }
+    });
+
+
+    private ServiceConnection mConn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            isConn = true;
+            mService = new Messenger(service);
+            showToast("连接状态：connected!");
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mService = null;
+            isConn = false;
+            showToast("连接状态：disconnected!");
+        }
+    };
+
 
     @Override
     public int getLayoutResource() {
@@ -55,7 +106,7 @@ public class MainActivity extends BaseActivity {
         hideBackButton();
         // setTitle("MainActivity");
 
-        showToast(new SimpleDateFormat().format(new Date()));
+//        showToast(new SimpleDateFormat().format(new Date()));
 
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
@@ -110,6 +161,7 @@ public class MainActivity extends BaseActivity {
         }
 
         /**
+         * 方式一：使用AIDL方式
          * 两个APP之间AIDL通信，在另一个APP下创建一个service,如下，
          * public class MyService extends Service {
          *     @Override
@@ -140,31 +192,48 @@ public class MainActivity extends BaseActivity {
          *
          * 客户端代码如下：
          */
-        Intent intent = new Intent("aidl.test1");
-        intent.setPackage("com.example.luckw.myapplication");
-        bindService(intent, new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
-            }
+//        Intent intent = new Intent("aidl.test1");
+//        intent.setPackage("com.example.luckw.myapplication");
+//        bindService(intent, new ServiceConnection() {
+//            @Override
+//            public void onServiceConnected(ComponentName name, IBinder service) {
+//                iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
+//            }
+//
+//            @Override
+//            public void onServiceDisconnected(ComponentName name) {
+//
+//            }
+//        }, BIND_AUTO_CREATE);
 
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
+        //方式二：使用Messenger方式
 
-            }
-        }, BIND_AUTO_CREATE);
+        //开启服务
+        bindServiceInvoked();
+
 
         findViewById(R.id.tv_title).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
-                    Toast.makeText(MainActivity.this, iMyAidlInterface.getName(), Toast.LENGTH_SHORT).show();
-                }
-                catch (RemoteException e)
-                {
-                    e.printStackTrace();
-                }
+                //方式一：使用AIDL方式
+//                try {
+//                    Toast.makeText(MainActivity.this, iMyAidlInterface.getName(), Toast.LENGTH_SHORT).show();
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+
+                //方式二：使用Messenger方式
+                Message msgFromClient = new Message();
+                msgFromClient.what = MSG_FROM_CLIENT;
+                msgFromClient.replyTo = mMessenger;
+//                if (isConn) {
+                    //往服务端发送消息
+                    try {
+                        mService.send(msgFromClient);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+//                }
             }
         });
     }
@@ -175,6 +244,19 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         Log.e(TAG, "resume");
+    }
+
+    private void bindServiceInvoked() {
+        Intent intent = new Intent("android.intent.action.MESSENGER");
+        intent.setPackage("com.example.luckw.myapplication");
+        boolean isBind = bindService(intent, mConn, BIND_AUTO_CREATE);
+        System.out.println(isBind);
+    }
+
+    @Override
+    protected void onDestroy() {
+        unbindService(mConn);
+        super.onDestroy();
     }
 
     private void setPage(int position) {
